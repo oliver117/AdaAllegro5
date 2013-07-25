@@ -24,3 +24,7 @@ http://alleg.sourceforge.net/
 ### fix
 
 * change stdint defs
+
+### feature
+
+* create bindings to addons
