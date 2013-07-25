@@ -8,6 +8,7 @@ with Allegro5.File;
 
 use Allegro5;
 
+
 package Allegro5.Bitmap_IO is
 
    type ALLEGRO_IIO_LOADER_FUNCTION is access function (arg1 : Interfaces.C.Strings.chars_ptr) return Bitmap.ALLEGRO_BITMAP;

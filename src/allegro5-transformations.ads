@@ -1,6 +1,7 @@
 with Interfaces.C; use Interfaces.C;
 with System;
 
+
 package Allegro5.Transformations is
 
    type ALLEGRO_TRANSFORM_m_array is array (0 .. 3, 0 .. 3) of aliased float;
@@ -9,10 +10,10 @@ package Allegro5.Transformations is
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_TRANSFORM);
 
-   procedure al_use_transform (trans : System.Address);
+   procedure al_use_transform (trans : ALLEGRO_TRANSFORM);
    pragma Import (C, al_use_transform, "al_use_transform");
 
-   procedure al_copy_transform (dest : access ALLEGRO_TRANSFORM; src : System.Address);
+   procedure al_copy_transform (dest : access ALLEGRO_TRANSFORM; src : ALLEGRO_TRANSFORM);
    pragma Import (C, al_copy_transform, "al_copy_transform");
 
    procedure al_identity_transform (trans : access ALLEGRO_TRANSFORM);
@@ -43,21 +44,21 @@ package Allegro5.Transformations is
    pragma Import (C, al_scale_transform, "al_scale_transform");
 
    procedure al_transform_coordinates
-     (trans : System.Address;
+     (trans : ALLEGRO_TRANSFORM;
       x : access float;
       y : access float);
    pragma Import (C, al_transform_coordinates, "al_transform_coordinates");
 
-   procedure al_compose_transform (trans : access ALLEGRO_TRANSFORM; other : System.Address);
+   procedure al_compose_transform (trans : access ALLEGRO_TRANSFORM; other : ALLEGRO_TRANSFORM);
    pragma Import (C, al_compose_transform, "al_compose_transform");
 
-   function al_get_current_transform return System.Address;
+   function al_get_current_transform return ALLEGRO_TRANSFORM;
    pragma Import (C, al_get_current_transform, "al_get_current_transform");
 
    procedure al_invert_transform (trans : access ALLEGRO_TRANSFORM);
    pragma Import (C, al_invert_transform, "al_invert_transform");
 
-   function al_check_inverse (trans : System.Address; tol : float) return int;
+   function al_check_inverse (trans : ALLEGRO_TRANSFORM; tol : float) return int;
    pragma Import (C, al_check_inverse, "al_check_inverse");
 
 end Allegro5.Transformations;

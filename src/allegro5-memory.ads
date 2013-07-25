@@ -3,6 +3,7 @@ with Interfaces.C.Strings;
 with System;
 with stdint;
 
+
 package Allegro5.Memory is
 
    --  arg-macro: function al_malloc (n)

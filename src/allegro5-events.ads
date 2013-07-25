@@ -8,6 +8,7 @@ with Allegro5.Base;
 
 use Allegro5;
 
+
 package Allegro5.Events is
 
    function ALLEGRO_EVENT_TYPE_IS_USER (t : unsigned) return Extensions.bool;

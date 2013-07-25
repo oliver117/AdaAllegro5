@@ -2,6 +2,7 @@ with Interfaces.C; use Interfaces.C;
 with Allegro5.Fixed;
 use Allegro5;
 
+
 package Allegro5.Inline_Fmaths is
 
    function al_ftofix (x : double) return Fixed.al_fixed;

@@ -1,9 +1,13 @@
-with Interfaces;
 with Interfaces.C; use Interfaces.C;
-with Allegro5.Color;
-with stdint;
 with Interfaces.C.Extensions;
+with stdint;
 with System;
+
+with Allegro5.Bitmap;
+with Allegro5.Color;
+
+use Allegro5;
+
 
 package Allegro5.Allegro.Primitives is
 
@@ -41,7 +45,7 @@ package Allegro5.Allegro.Primitives is
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_VERTEX_ELEMENT);
 
-   --  skipped empty struct ALLEGRO_VERTEX_DECL
+   type ALLEGRO_VERTEX_DECL is new System.Address;
 
    type ALLEGRO_VERTEX is record
       x : aliased float;
@@ -53,7 +57,7 @@ package Allegro5.Allegro.Primitives is
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_VERTEX);
 
-   function al_get_allegro_primitives_version return Interfaces.Unsigned_32;
+   function al_get_allegro_primitives_version return stdint.uint32_t;
    pragma Import (C, al_get_allegro_primitives_version, "al_get_allegro_primitives_version");
 
    function al_init_primitives_addon return Extensions.bool;
@@ -64,8 +68,8 @@ package Allegro5.Allegro.Primitives is
 
    function al_draw_prim
      (vtxs : System.Address;
-      decl : System.Address;
-      texture : System.Address;
+      decl : ALLEGRO_VERTEX_DECL;
+      texture : Bitmap.ALLEGRO_BITMAP;
       start : int;
       c_end : int;
       c_type : int) return int;
@@ -73,17 +77,17 @@ package Allegro5.Allegro.Primitives is
 
    function al_draw_indexed_prim
      (vtxs : System.Address;
-      decl : System.Address;
-      texture : System.Address;
+      decl : ALLEGRO_VERTEX_DECL;
+      texture : Bitmap.ALLEGRO_BITMAP;
       indices : access int;
       num_vtx : int;
       c_type : int) return int;
    pragma Import (C, al_draw_indexed_prim, "al_draw_indexed_prim");
 
-   function al_create_vertex_decl (elements : System.Address; stride : int) return System.Address;
+   function al_create_vertex_decl (elements : ALLEGRO_VERTEX_ELEMENT; stride : int) return ALLEGRO_VERTEX_DECL;
    pragma Import (C, al_create_vertex_decl, "al_create_vertex_decl");
 
-   procedure al_destroy_vertex_decl (decl : System.Address);
+   procedure al_destroy_vertex_decl (decl : ALLEGRO_VERTEX_DECL);
    pragma Import (C, al_destroy_vertex_decl, "al_destroy_vertex_decl");
 
    procedure al_draw_soft_triangle

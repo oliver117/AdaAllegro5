@@ -4,6 +4,7 @@ with System;
 with Interfaces.C.Extensions;
 with stdint;
 
+
 package Allegro5.UTF8 is
 
    type u_al_tagbstring;

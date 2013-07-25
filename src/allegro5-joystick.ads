@@ -4,6 +4,7 @@ with System;
 with Interfaces.C.Strings;
 limited with Allegro5.Events;
 
+
 package Allegro5.Joystick is
 
    subtype ALLEGRO_JOYSTICK is Extensions.opaque_structure_def;

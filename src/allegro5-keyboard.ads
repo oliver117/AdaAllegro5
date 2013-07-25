@@ -1,14 +1,19 @@
 with Interfaces.C; use Interfaces.C;
-with System;
 with Interfaces.C.Extensions;
 with Interfaces.C.Strings;
+with System;
+
+with Allegro5.Display;
 limited with Allegro5.Events;
+
+use Allegro5;
+
 
 package Allegro5.Keyboard is
 
    type ALLEGRO_KEYBOARD_STATE_uu_key_down_u_internal_u_u_array is array (0 .. 7) of aliased unsigned;
    type ALLEGRO_KEYBOARD_STATE is record
-      display : System.Address;
+      display : Allegro5.Display.ALLEGRO_DISPLAY;
       uu_key_down_u_internal_u_u : aliased ALLEGRO_KEYBOARD_STATE_uu_key_down_u_internal_u_u_array;
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_KEYBOARD_STATE);
@@ -31,7 +36,7 @@ package Allegro5.Keyboard is
    procedure al_get_keyboard_state (ret_state : access ALLEGRO_KEYBOARD_STATE);
    pragma Import (C, al_get_keyboard_state, "al_get_keyboard_state");
 
-   function al_key_down (arg1 : System.Address; keycode : int) return Extensions.bool;
+   function al_key_down (arg1 : ALLEGRO_KEYBOARD_STATE; keycode : int) return Extensions.bool;
    pragma Import (C, al_key_down, "al_key_down");
 
    function al_get_keyboard_event_source return access Allegro5.Events.ALLEGRO_EVENT_SOURCE;

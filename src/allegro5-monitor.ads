@@ -1,6 +1,7 @@
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
 
+
 package Allegro5.Monitor is
 
    type ALLEGRO_MONITOR_INFO is record

@@ -1,30 +1,32 @@
 with Interfaces.C; use Interfaces.C;
-with System;
 with Interfaces.C.Extensions;
+with System;
+
 limited with Allegro5.Altime;
+
 
 package Allegro5.Threads is
 
-   subtype ALLEGRO_THREAD is Extensions.opaque_structure_def;
-   subtype ALLEGRO_MUTEX is Extensions.opaque_structure_def;
-   subtype ALLEGRO_COND is Extensions.opaque_structure_def;
+   type ALLEGRO_THREAD is new System.Address;
+   type ALLEGRO_MUTEX is new System.Address;
+   type ALLEGRO_COND is new System.Address;
 
-   function al_create_thread (proc : access function (arg1 : System.Address; arg2 : System.Address) return System.Address; arg : System.Address) return System.Address;
+   function al_create_thread (proc : access function (thread : ALLEGRO_THREAD; arg : System.Address) return System.Address; arg : System.Address) return ALLEGRO_THREAD;
    pragma Import (C, al_create_thread, "al_create_thread");
 
-   procedure al_start_thread (outer : System.Address);
+   procedure al_start_thread (outer : ALLEGRO_THREAD);
    pragma Import (C, al_start_thread, "al_start_thread");
 
-   procedure al_join_thread (outer : System.Address; ret_value : System.Address);
+   procedure al_join_thread (outer : ALLEGRO_THREAD; ret_value : System.Address);
    pragma Import (C, al_join_thread, "al_join_thread");
 
-   procedure al_set_thread_should_stop (outer : System.Address);
+   procedure al_set_thread_should_stop (outer : ALLEGRO_THREAD);
    pragma Import (C, al_set_thread_should_stop, "al_set_thread_should_stop");
 
-   function al_get_thread_should_stop (outer : System.Address) return Extensions.bool;
+   function al_get_thread_should_stop (outer : ALLEGRO_THREAD) return Extensions.bool;
    pragma Import (C, al_get_thread_should_stop, "al_get_thread_should_stop");
 
-   procedure al_destroy_thread (thread : System.Address);
+   procedure al_destroy_thread (thread : ALLEGRO_THREAD);
    pragma Import (C, al_destroy_thread, "al_destroy_thread");
 
    procedure al_run_detached_thread (proc : access function (arg1 : System.Address) return System.Address; arg : System.Address);
@@ -33,7 +35,7 @@ package Allegro5.Threads is
    function al_create_mutex return ALLEGRO_MUTEX;
    pragma Import (C, al_create_mutex, "al_create_mutex");
 
-   function al_create_mutex_recursive return System.Address;
+   function al_create_mutex_recursive return ALLEGRO_MUTEX;
    pragma Import (C, al_create_mutex_recursive, "al_create_mutex_recursive");
 
    procedure al_lock_mutex (mutex : ALLEGRO_MUTEX);
@@ -55,15 +57,15 @@ package Allegro5.Threads is
    pragma Import (C, al_wait_cond, "al_wait_cond");
 
    function al_wait_cond_until
-     (cond : System.Address;
-      mutex : System.Address;
+     (cond : ALLEGRO_COND;
+      mutex : ALLEGRO_MUTEX;
       timeout : access constant Allegro5.Altime.ALLEGRO_TIMEOUT) return int;
    pragma Import (C, al_wait_cond_until, "al_wait_cond_until");
 
-   procedure al_broadcast_cond (cond : System.Address);
+   procedure al_broadcast_cond (cond : ALLEGRO_COND);
    pragma Import (C, al_broadcast_cond, "al_broadcast_cond");
 
-   procedure al_signal_cond (cond : System.Address);
+   procedure al_signal_cond (cond : ALLEGRO_COND);
    pragma Import (C, al_signal_cond, "al_signal_cond");
 
 end Allegro5.Threads;

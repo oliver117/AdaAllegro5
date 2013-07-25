@@ -10,21 +10,15 @@ http://alleg.sourceforge.net/
 
 ### Cleanup
 
-* primitives
 * debug
 * events
-* file
 * fixed
 * fmaths
 * fshook
-* fullscreen_mode
 * inline_fmaths
 * joystick
 * keyboard
 * memory
-* threads
-* timer
-* transformations
 * utf8
 
 ### fix

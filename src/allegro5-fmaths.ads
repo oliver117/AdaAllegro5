@@ -2,6 +2,7 @@ with Interfaces.C; use Interfaces.C;
 with Allegro5.Fixed;
 use Allegro5;
 
+
 package Allegro5.Fmaths is
 
    function al_fixsqrt (x : Fixed.al_fixed) return Fixed.al_fixed;

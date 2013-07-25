@@ -1,5 +1,6 @@
 with Interfaces.C; use Interfaces.C;
 
+
 package Allegro5.Error is
 
    function al_get_errno return int;

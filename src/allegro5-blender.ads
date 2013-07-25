@@ -1,5 +1,6 @@
 with Interfaces.C; use Interfaces.C;
 
+
 package Allegro5.Blender is
 
    type ALLEGRO_BLEND_MODE is 

@@ -4,6 +4,7 @@ with Interfaces.C.Extensions;
 with stdint;
 with System;
 
+
 package Allegro5.Fshook is
 
    EOF : constant := -1;

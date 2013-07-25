@@ -6,6 +6,7 @@ with Allegro5.Bitmap;
 
 use Allegro5;
 
+
 package Allegro5.Bitmap_Lock is
 
    type ALLEGRO_LOCKED_REGION is record

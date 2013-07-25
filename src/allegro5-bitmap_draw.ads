@@ -6,6 +6,7 @@ with Allegro5.Color;
 
 use Allegro5;
 
+
 package Allegro5.Bitmap_Draw is
 
    procedure al_draw_bitmap
