@@ -1,18 +1,22 @@
 with Interfaces.C; use Interfaces.C;
 with System;
+
+with Allegro5.Bitmap;
 with Allegro5.Color;
+
+use Allegro5;
 
 package Allegro5.Bitmap_Draw is
 
    procedure al_draw_bitmap
-     (bitmap : System.Address;
+     (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP;
       dx : float;
       dy : float;
       flags : int);
    pragma Import (C, al_draw_bitmap, "al_draw_bitmap");
 
    procedure al_draw_bitmap_region
-     (bitmap : System.Address;
+     (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP;
       sx : float;
       sy : float;
       sw : float;
@@ -23,7 +27,7 @@ package Allegro5.Bitmap_Draw is
    pragma Import (C, al_draw_bitmap_region, "al_draw_bitmap_region");
 
    procedure al_draw_scaled_bitmap
-     (bitmap : System.Address;
+     (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP;
       sx : float;
       sy : float;
       sw : float;
@@ -36,7 +40,7 @@ package Allegro5.Bitmap_Draw is
    pragma Import (C, al_draw_scaled_bitmap, "al_draw_scaled_bitmap");
 
    procedure al_draw_rotated_bitmap
-     (bitmap : System.Address;
+     (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP;
       cx : float;
       cy : float;
       dx : float;
@@ -46,7 +50,7 @@ package Allegro5.Bitmap_Draw is
    pragma Import (C, al_draw_rotated_bitmap, "al_draw_rotated_bitmap");
 
    procedure al_draw_scaled_rotated_bitmap
-     (bitmap : System.Address;
+     (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP;
       cx : float;
       cy : float;
       dx : float;
@@ -58,16 +62,16 @@ package Allegro5.Bitmap_Draw is
    pragma Import (C, al_draw_scaled_rotated_bitmap, "al_draw_scaled_rotated_bitmap");
 
    procedure al_draw_tinted_bitmap
-     (bitmap : System.Address;
-      tint : Allegro5.Color.ALLEGRO_COLOR;
+     (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP;
+      tint : Color.ALLEGRO_COLOR;
       dx : float;
       dy : float;
       flags : int);
    pragma Import (C, al_draw_tinted_bitmap, "al_draw_tinted_bitmap");
 
    procedure al_draw_tinted_bitmap_region
-     (bitmap : System.Address;
-      tint : Allegro5.Color.ALLEGRO_COLOR;
+     (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP;
+      tint : Color.ALLEGRO_COLOR;
       sx : float;
       sy : float;
       sw : float;
@@ -78,8 +82,8 @@ package Allegro5.Bitmap_Draw is
    pragma Import (C, al_draw_tinted_bitmap_region, "al_draw_tinted_bitmap_region");
 
    procedure al_draw_tinted_scaled_bitmap
-     (bitmap : System.Address;
-      tint : Allegro5.Color.ALLEGRO_COLOR;
+     (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP;
+      tint : Color.ALLEGRO_COLOR;
       sx : float;
       sy : float;
       sw : float;
@@ -92,8 +96,8 @@ package Allegro5.Bitmap_Draw is
    pragma Import (C, al_draw_tinted_scaled_bitmap, "al_draw_tinted_scaled_bitmap");
 
    procedure al_draw_tinted_rotated_bitmap
-     (bitmap : System.Address;
-      tint : Allegro5.Color.ALLEGRO_COLOR;
+     (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP;
+      tint : Color.ALLEGRO_COLOR;
       cx : float;
       cy : float;
       dx : float;
@@ -103,8 +107,8 @@ package Allegro5.Bitmap_Draw is
    pragma Import (C, al_draw_tinted_rotated_bitmap, "al_draw_tinted_rotated_bitmap");
 
    procedure al_draw_tinted_scaled_rotated_bitmap
-     (bitmap : System.Address;
-      tint : Allegro5.Color.ALLEGRO_COLOR;
+     (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP;
+      tint : Color.ALLEGRO_COLOR;
       cx : float;
       cy : float;
       dx : float;
@@ -116,12 +120,12 @@ package Allegro5.Bitmap_Draw is
    pragma Import (C, al_draw_tinted_scaled_rotated_bitmap, "al_draw_tinted_scaled_rotated_bitmap");
 
    procedure al_draw_tinted_scaled_rotated_bitmap_region
-     (bitmap : System.Address;
+     (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP;
       sx : float;
       sy : float;
       sw : float;
       sh : float;
-      tint : Allegro5.Color.ALLEGRO_COLOR;
+      tint : Color.ALLEGRO_COLOR;
       cx : float;
       cy : float;
       dx : float;

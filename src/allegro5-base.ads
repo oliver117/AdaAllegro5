@@ -17,8 +17,6 @@ package Allegro5.Base is
    ALLEGRO_VERSION_INT : constant := ALLEGRO_VERSION * 2 ** 24 + ALLEGRO_SUB_VERSION * 2 ** 16 + ALLEGRO_WIP_VERSION * 2 ** 8 + ALLEGRO_RELEASE_NUMBER;
    ALLEGRO_PI : constant := 3.14159265358979323846;
 
-
-
    function al_get_allegro_version return stdint.uint32_t;
    pragma Import (C, al_get_allegro_version, "al_get_allegro_version");
 

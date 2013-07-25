@@ -40,6 +40,7 @@ package Allegro5.Color is
       ALLEGRO_PIXEL_FORMAT_RGBA_4444,
       ALLEGRO_NUM_PIXEL_FORMATS);
    pragma Convention (C, ALLEGRO_PIXEL_FORMAT);
+
    function al_map_rgb
      (r : unsigned_char;
       g : unsigned_char;

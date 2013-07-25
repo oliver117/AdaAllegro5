@@ -7,7 +7,7 @@ with Allegro5.Color;
 
 package Allegro5.Bitmap is
 
-   subtype ALLEGRO_BITMAP is Extensions.opaque_structure_def;
+   type ALLEGRO_BITMAP is new System.Address;
 
    procedure al_set_new_bitmap_format (format : int);
    pragma Import (C, al_set_new_bitmap_format, "al_set_new_bitmap_format");

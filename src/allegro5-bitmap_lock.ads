@@ -1,7 +1,9 @@
 with Interfaces.C; use Interfaces.C;
-with System;
 with Interfaces.C.Extensions;
+with System;
+
 with Allegro5.Bitmap;
+
 use Allegro5;
 
 package Allegro5.Bitmap_Lock is
