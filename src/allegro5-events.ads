@@ -1,9 +1,12 @@
 with Interfaces.C; use Interfaces.C;
-with System;
 with Interfaces.C.Extensions;
 with stdint;
-with Allegro5.Base;
+with System;
+
 limited with Allegro5.Altime;
+with Allegro5.Base;
+
+use Allegro5;
 
 package Allegro5.Events is
 
@@ -38,7 +41,7 @@ package Allegro5.Events is
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_DISPLAY_EVENT);
 
-   subtype ALLEGRO_DISPLAY is Extensions.opaque_structure_def;
+   type ALLEGRO_DISPLAY is new System.Address;
 
    type ALLEGRO_JOYSTICK_EVENT is record
       c_type : aliased ALLEGRO_EVENT_TYPE;

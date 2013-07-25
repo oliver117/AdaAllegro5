@@ -23,7 +23,7 @@ package Allegro5.TLS is
    procedure al_store_state (state : access ALLEGRO_STATE; flags : int);
    pragma Import (C, al_store_state, "al_store_state");
 
-   procedure al_restore_state (state : System.Address);
+   procedure al_restore_state (state : ALLEGRO_STATE);
    pragma Import (C, al_restore_state, "al_restore_state");
 
 end Allegro5.TLS;

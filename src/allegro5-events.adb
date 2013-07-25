@@ -1,7 +1,8 @@
 with Interfaces.C; use Interfaces.C;
-with System;
 with Interfaces.C.Extensions;
 with stdint;
+with System;
+
 
 package body Allegro5.Events is
 

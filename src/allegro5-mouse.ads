@@ -1,7 +1,10 @@
 with Interfaces.C; use Interfaces.C;
-with System;
 with Interfaces.C.Extensions;
+with System;
+
+with Allegro5.Display;
 limited with Allegro5.Events;
+
 
 package Allegro5.Mouse is
 
@@ -16,7 +19,7 @@ package Allegro5.Mouse is
       more_axes : aliased ALLEGRO_MOUSE_STATE_more_axes_array;
       buttons : aliased int;
       pressure : aliased float;
-      display : System.Address;
+      display : Allegro5.Display.ALLEGRO_DISPLAY;
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_MOUSE_STATE);
 
@@ -36,7 +39,7 @@ package Allegro5.Mouse is
    pragma Import (C, al_get_mouse_num_axes, "al_get_mouse_num_axes");
 
    function al_set_mouse_xy
-     (display : System.Address;
+     (display : Allegro5.Display.ALLEGRO_DISPLAY;
       x : int;
       y : int) return Extensions.bool;
    pragma Import (C, al_set_mouse_xy, "al_set_mouse_xy");
@@ -53,16 +56,16 @@ package Allegro5.Mouse is
    procedure al_get_mouse_state (ret_state : access ALLEGRO_MOUSE_STATE);
    pragma Import (C, al_get_mouse_state, "al_get_mouse_state");
 
-   function al_mouse_button_down (state : System.Address; button : int) return Extensions.bool;
+   function al_mouse_button_down (state : ALLEGRO_MOUSE_STATE; button : int) return Extensions.bool;
    pragma Import (C, al_mouse_button_down, "al_mouse_button_down");
 
-   function al_get_mouse_state_axis (state : System.Address; axis : int) return int;
+   function al_get_mouse_state_axis (state : ALLEGRO_MOUSE_STATE; axis : int) return int;
    pragma Import (C, al_get_mouse_state_axis, "al_get_mouse_state_axis");
 
    function al_get_mouse_cursor_position (ret_x : access int; ret_y : access int) return Extensions.bool;
    pragma Import (C, al_get_mouse_cursor_position, "al_get_mouse_cursor_position");
 
-   function al_grab_mouse (display : System.Address) return Extensions.bool;
+   function al_grab_mouse (display : Allegro5.Display.ALLEGRO_DISPLAY) return Extensions.bool;
    pragma Import (C, al_grab_mouse, "al_grab_mouse");
 
    function al_ungrab_mouse return Extensions.bool;

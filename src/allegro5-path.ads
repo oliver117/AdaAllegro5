@@ -1,7 +1,8 @@
 with Interfaces.C; use Interfaces.C;
+with Interfaces.C.Extensions;
 with Interfaces.C.Strings;
 with System;
-with Interfaces.C.Extensions;
+
 
 package Allegro5.Path is
 
@@ -9,7 +10,7 @@ package Allegro5.Path is
    ALLEGRO_NATIVE_PATH_SEP : aliased constant Character := '/';
    ALLEGRO_NATIVE_DRIVE_SEP : aliased constant Character := Character'Val (0);
 
-   type ALLEGRO_PATH is new Interfaces.C.Extensions.opaque_structure_def;
+   type ALLEGRO_PATH is new System.Address;
 
    function al_create_path (str : Interfaces.C.Strings.chars_ptr) return ALLEGRO_PATH;
    pragma Import (C, al_create_path, "al_create_path");

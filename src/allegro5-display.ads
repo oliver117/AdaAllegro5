@@ -1,12 +1,17 @@
 with Interfaces.C; use Interfaces.C;
-with System;
 with Interfaces.C.Extensions;
-limited with Allegro5.Events;
 with Interfaces.C.Strings;
+with System;
+
+with Allegro5.Bitmap;
+limited with Allegro5.Events;
+
+use Allegro5;
+
 
 package Allegro5.Display is
 
-   subtype ALLEGRO_DISPLAY is System.Address;
+   type ALLEGRO_DISPLAY is new System.Address;
 
    type ALLEGRO_DISPLAY_OPTIONS is
      (ALLEGRO_RED_SIZE,
@@ -64,59 +69,59 @@ package Allegro5.Display is
    function al_get_new_display_flags return int;
    pragma Import (C, al_get_new_display_flags, "al_get_new_display_flags");
 
-   function al_get_display_width (display : System.Address) return int;
+   function al_get_display_width (display : ALLEGRO_DISPLAY) return int;
    pragma Import (C, al_get_display_width, "al_get_display_width");
 
-   function al_get_display_height (display : System.Address) return int;
+   function al_get_display_height (display : ALLEGRO_DISPLAY) return int;
    pragma Import (C, al_get_display_height, "al_get_display_height");
 
-   function al_get_display_format (display : System.Address) return int;
+   function al_get_display_format (display : ALLEGRO_DISPLAY) return int;
    pragma Import (C, al_get_display_format, "al_get_display_format");
 
-   function al_get_display_refresh_rate (display : System.Address) return int;
+   function al_get_display_refresh_rate (display : ALLEGRO_DISPLAY) return int;
    pragma Import (C, al_get_display_refresh_rate, "al_get_display_refresh_rate");
 
-   function al_get_display_flags (display : System.Address) return int;
+   function al_get_display_flags (display : ALLEGRO_DISPLAY) return int;
    pragma Import (C, al_get_display_flags, "al_get_display_flags");
 
    function al_set_display_flag
-     (display : System.Address;
+     (display : ALLEGRO_DISPLAY;
       flag : int;
       onoff : Extensions.bool) return Extensions.bool;
    pragma Import (C, al_set_display_flag, "al_set_display_flag");
 
    function al_toggle_display_flag
-     (display : System.Address;
+     (display : ALLEGRO_DISPLAY;
       flag : int;
       onoff : Extensions.bool) return Extensions.bool;
    pragma Import (C, al_toggle_display_flag, "al_toggle_display_flag");
 
-   function al_create_display (w : int; h : int) return System.Address;
+   function al_create_display (w : int; h : int) return ALLEGRO_DISPLAY;
    pragma Import (C, al_create_display, "al_create_display");
 
-   procedure al_destroy_display (display : System.Address);
+   procedure al_destroy_display (display : ALLEGRO_DISPLAY);
    pragma Import (C, al_destroy_display, "al_destroy_display");
 
-   function al_get_current_display return System.Address;
+   function al_get_current_display return ALLEGRO_DISPLAY;
    pragma Import (C, al_get_current_display, "al_get_current_display");
 
-   procedure al_set_target_bitmap (bitmap : System.Address);
+   procedure al_set_target_bitmap (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP);
    pragma Import (C, al_set_target_bitmap, "al_set_target_bitmap");
 
-   procedure al_set_target_backbuffer (display : System.Address);
+   procedure al_set_target_backbuffer (display : ALLEGRO_DISPLAY);
    pragma Import (C, al_set_target_backbuffer, "al_set_target_backbuffer");
 
-   function al_get_backbuffer (display : System.Address) return System.Address;
+   function al_get_backbuffer (display : ALLEGRO_DISPLAY) return Bitmap.ALLEGRO_BITMAP;
    pragma Import (C, al_get_backbuffer, "al_get_backbuffer");
 
-   function al_get_target_bitmap return System.Address;
+   function al_get_target_bitmap return Bitmap.ALLEGRO_BITMAP;
    pragma Import (C, al_get_target_bitmap, "al_get_target_bitmap");
 
-   function al_acknowledge_resize (display : System.Address) return Extensions.bool;
+   function al_acknowledge_resize (display : ALLEGRO_DISPLAY) return Extensions.bool;
    pragma Import (C, al_acknowledge_resize, "al_acknowledge_resize");
 
    function al_resize_display
-     (display : System.Address;
+     (display : ALLEGRO_DISPLAY;
       width : int;
       height : int) return Extensions.bool;
    pragma Import (C, al_resize_display, "al_resize_display");
@@ -131,22 +136,22 @@ package Allegro5.Display is
       height : int);
    pragma Import (C, al_update_display_region, "al_update_display_region");
 
-   function al_is_compatible_bitmap (bitmap : System.Address) return Extensions.bool;
+   function al_is_compatible_bitmap (bitmap : Allegro5.Bitmap.ALLEGRO_BITMAP) return Extensions.bool;
    pragma Import (C, al_is_compatible_bitmap, "al_is_compatible_bitmap");
 
    function al_wait_for_vsync return Extensions.bool;
    pragma Import (C, al_wait_for_vsync, "al_wait_for_vsync");
 
-   function al_get_display_event_source (display : System.Address) return access Allegro5.Events.ALLEGRO_EVENT_SOURCE;
+   function al_get_display_event_source (display : ALLEGRO_DISPLAY) return access Events.ALLEGRO_EVENT_SOURCE;
    pragma Import (C, al_get_display_event_source, "al_get_display_event_source");
 
-   procedure al_set_display_icon (display : System.Address; icon : System.Address);
+   procedure al_set_display_icon (display : ALLEGRO_DISPLAY; icon : Bitmap.ALLEGRO_BITMAP);
    pragma Import (C, al_set_display_icon, "al_set_display_icon");
 
    procedure al_set_display_icons
-     (display : System.Address;
+     (display : ALLEGRO_DISPLAY;
       num_icons : int;
-      icons : System.Address);
+      icons : Bitmap.ALLEGRO_BITMAP);
    pragma Import (C, al_set_display_icons, "al_set_display_icons");
 
    function al_get_new_display_adapter return int;
@@ -162,18 +167,18 @@ package Allegro5.Display is
    pragma Import (C, al_get_new_window_position, "al_get_new_window_position");
 
    procedure al_set_window_position
-     (display : System.Address;
+     (display : ALLEGRO_DISPLAY;
       x : int;
       y : int);
    pragma Import (C, al_set_window_position, "al_set_window_position");
 
    procedure al_get_window_position
-     (display : System.Address;
+     (display : ALLEGRO_DISPLAY;
       x : access int;
       y : access int);
    pragma Import (C, al_get_window_position, "al_get_window_position");
 
-   procedure al_set_window_title (display : System.Address; title : Interfaces.C.Strings.chars_ptr);
+   procedure al_set_window_title (display : ALLEGRO_DISPLAY; title : Interfaces.C.Strings.chars_ptr);
    pragma Import (C, al_set_window_title, "al_set_window_title");
 
    procedure al_set_new_display_option
@@ -188,7 +193,7 @@ package Allegro5.Display is
    procedure al_reset_new_display_options;
    pragma Import (C, al_reset_new_display_options, "al_reset_new_display_options");
 
-   function al_get_display_option (display : System.Address; option : ALLEGRO_DISPLAY_OPTIONS) return int;
+   function al_get_display_option (display : ALLEGRO_DISPLAY; option : ALLEGRO_DISPLAY_OPTIONS) return int;
    pragma Import (C, al_get_display_option, "al_get_display_option");
 
    procedure al_hold_bitmap_drawing (hold : Extensions.bool);

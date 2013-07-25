@@ -1,13 +1,19 @@
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
-with System;
 with Interfaces.C.Strings;
+with System;
+
+with Allegro5.Config;
+with Allegro5.Path;
+
+use Allegro5;
+
 
 package Allegro5.System is
 
    function al_init return Extensions.bool;
 
-   subtype ALLEGRO_SYSTEM is Extensions.opaque_structure_def;
+   type ALLEGRO_SYSTEM is new Standard.System.Address;
 
    function al_install_system (version : int; atexit_ptr : access function (arg1 : access procedure) return int) return Extensions.bool;
    pragma Import (C, al_install_system, "al_install_system");
@@ -18,13 +24,13 @@ package Allegro5.System is
    function al_is_system_installed return Extensions.bool;
    pragma Import (C, al_is_system_installed, "al_is_system_installed");
 
-   function al_get_system_driver return Standard.System.Address;
+   function al_get_system_driver return ALLEGRO_SYSTEM;
    pragma Import (C, al_get_system_driver, "al_get_system_driver");
 
-   function al_get_system_config return Standard.System.Address;
+   function al_get_system_config return Config.ALLEGRO_CONFIG;
    pragma Import (C, al_get_system_config, "al_get_system_config");
 
-   function al_get_standard_path (id : int) return Standard.System.Address;
+   function al_get_standard_path (id : int) return Path.ALLEGRO_PATH;
    pragma Import (C, al_get_standard_path, "al_get_standard_path");
 
    procedure al_set_exe_name (path : Interfaces.C.Strings.chars_ptr);

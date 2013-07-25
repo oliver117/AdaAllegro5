@@ -1,10 +1,16 @@
 with Interfaces.C; use Interfaces.C;
-with System;
 with Interfaces.C.Extensions;
+with System;
+
+with Allegro5.Bitmap;
+with Allegro5.Display;
+
+use Allegro5;
+
 
 package Allegro5.Mouse_Cursor is
 
-   subtype ALLEGRO_MOUSE_CURSOR is Interfaces.C.Extensions.opaque_structure_def;
+   type ALLEGRO_MOUSE_CURSOR is new System.Address;
 
    type ALLEGRO_SYSTEM_MOUSE_CURSOR is 
      (ALLEGRO_SYSTEM_MOUSE_CURSOR_NONE,
@@ -31,24 +37,24 @@ package Allegro5.Mouse_Cursor is
    pragma Convention (C, ALLEGRO_SYSTEM_MOUSE_CURSOR);
 
    function al_create_mouse_cursor
-     (sprite : System.Address;
+     (sprite : Bitmap.ALLEGRO_BITMAP;
       xfocus : int;
-      yfocus : int) return System.Address;
+      yfocus : int) return ALLEGRO_MOUSE_CURSOR;
    pragma Import (C, al_create_mouse_cursor, "al_create_mouse_cursor");
 
    procedure al_destroy_mouse_cursor (arg1 : ALLEGRO_MOUSE_CURSOR);
    pragma Import (C, al_destroy_mouse_cursor, "al_destroy_mouse_cursor");
 
-   function al_set_mouse_cursor (display : System.Address; cursor : ALLEGRO_MOUSE_CURSOR) return Extensions.bool;
+   function al_set_mouse_cursor (display : Allegro5.Display.ALLEGRO_DISPLAY; cursor : ALLEGRO_MOUSE_CURSOR) return Extensions.bool;
    pragma Import (C, al_set_mouse_cursor, "al_set_mouse_cursor");
 
-   function al_set_system_mouse_cursor (display : System.Address; cursor_id : ALLEGRO_SYSTEM_MOUSE_CURSOR) return Extensions.bool;
+   function al_set_system_mouse_cursor (display : Allegro5.Display.ALLEGRO_DISPLAY; cursor_id : ALLEGRO_SYSTEM_MOUSE_CURSOR) return Extensions.bool;
    pragma Import (C, al_set_system_mouse_cursor, "al_set_system_mouse_cursor");
 
-   function al_show_mouse_cursor (display : System.Address) return Extensions.bool;
+   function al_show_mouse_cursor (display : Allegro5.Display.ALLEGRO_DISPLAY) return Extensions.bool;
    pragma Import (C, al_show_mouse_cursor, "al_show_mouse_cursor");
 
-   function al_hide_mouse_cursor (display : System.Address) return Extensions.bool;
+   function al_hide_mouse_cursor (display : Allegro5.Display.ALLEGRO_DISPLAY) return Extensions.bool;
    pragma Import (C, al_hide_mouse_cursor, "al_hide_mouse_cursor");
 
 end Allegro5.Mouse_Cursor;
