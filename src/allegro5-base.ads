@@ -1,6 +1,7 @@
 with Interfaces.C; use Interfaces.C;
-with Interfaces.C.Extensions; use Interfaces.C.Extensions;
+with stdint;
 with System;
+
 
 package Allegro5.Base is
 
@@ -13,12 +14,12 @@ package Allegro5.Base is
    ALLEGRO_VERSION_STR : constant String := "5.0.10";
    ALLEGRO_DATE_STR : constant String := "2013";
    ALLEGRO_DATE : constant := 20130616;
-   ALLEGRO_VERSION_INT : int := ALLEGRO_VERSION * 2 ** 24 + ALLEGRO_SUB_VERSION * 2 ** 16 + ALLEGRO_WIP_VERSION * 2 ** 8 + ALLEGRO_RELEASE_NUMBER;
+   ALLEGRO_VERSION_INT : constant := ALLEGRO_VERSION * 2 ** 24 + ALLEGRO_SUB_VERSION * 2 ** 16 + ALLEGRO_WIP_VERSION * 2 ** 8 + ALLEGRO_RELEASE_NUMBER;
    ALLEGRO_PI : constant := 3.14159265358979323846;
 
 
 
-   function al_get_allegro_version return Unsigned_32;
+   function al_get_allegro_version return stdint.uint32_t;
    pragma Import (C, al_get_allegro_version, "al_get_allegro_version");
 
    function al_run_main

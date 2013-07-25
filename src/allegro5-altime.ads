@@ -1,6 +1,6 @@
 with Interfaces.C; use Interfaces.C;
-
 with stdint;
+
 
 package Allegro5.Altime is
 

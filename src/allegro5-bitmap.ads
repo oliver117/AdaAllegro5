@@ -1,7 +1,9 @@
 with Interfaces.C; use Interfaces.C;
-with System;
-with Allegro5.Color;
 with Interfaces.C.Extensions;
+with System;
+
+with Allegro5.Color;
+
 
 package Allegro5.Bitmap is
 
@@ -55,10 +57,10 @@ package Allegro5.Bitmap is
    function al_get_pixel
      (bitmap : ALLEGRO_BITMAP;
       x : int;
-      y : int) return Allegro5.Color.ALLEGRO_COLOR;
+      y : int) return Color.ALLEGRO_COLOR;
    pragma Import (C, al_get_pixel, "al_get_pixel");
 
-   procedure al_convert_mask_to_alpha (bitmap : ALLEGRO_BITMAP; mask_color : Allegro5.Color.ALLEGRO_COLOR);
+   procedure al_convert_mask_to_alpha (bitmap : ALLEGRO_BITMAP; mask_color : Color.ALLEGRO_COLOR);
    pragma Import (C, al_convert_mask_to_alpha, "al_convert_mask_to_alpha");
 
    procedure al_set_clipping_rectangle

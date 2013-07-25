@@ -1,6 +1,6 @@
 with Interfaces.C; use Interfaces.C;
-with Interfaces.C.Extensions; use Interfaces.C.Extensions;
 with System;
+
 
 package body Allegro5.Base is
 

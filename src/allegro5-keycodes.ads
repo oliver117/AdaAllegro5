@@ -1,7 +1,9 @@
 with Interfaces.C; use Interfaces.C;
 
+
 package Allegro5.Keycodes is
 
+   subtype ALLEGRO_KEYCODE is unsigned;
    ALLEGRO_KEY_A : constant ALLEGRO_KEYCODE := 1;
    ALLEGRO_KEY_B : constant ALLEGRO_KEYCODE := 2;
    ALLEGRO_KEY_C : constant ALLEGRO_KEYCODE := 3;
@@ -125,6 +127,7 @@ package Allegro5.Keycodes is
    ALLEGRO_KEY_CAPSLOCK : constant ALLEGRO_KEYCODE := 226;
    ALLEGRO_KEY_MAX : constant ALLEGRO_KEYCODE := 227;
 
+   subtype ALLEGRO_KEYMOD is unsigned;
    ALLEGRO_KEYMOD_SHIFT : constant ALLEGRO_KEYMOD := 1;
    ALLEGRO_KEYMOD_CTRL : constant ALLEGRO_KEYMOD := 2;
    ALLEGRO_KEYMOD_ALT : constant ALLEGRO_KEYMOD := 4;
