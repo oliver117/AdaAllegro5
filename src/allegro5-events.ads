@@ -5,6 +5,7 @@ with System;
 
 limited with Allegro5.Altime;
 with Allegro5.Base;
+with Allegro5.Keycodes;
 
 use Allegro5;
 
@@ -61,9 +62,9 @@ package Allegro5.Events is
       source : System.Address;
       timestamp : aliased double;
       display : System.Address;
-      keycode : aliased int;
+      keycode : aliased Keycodes.ALLEGRO_KEYCODE;
       unichar : aliased int;
-      modifiers : aliased unsigned;
+      modifiers : aliased Keycodes.ALLEGRO_KEYMOD;
       repeat : aliased Extensions.bool;
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_KEYBOARD_EVENT);
@@ -159,18 +160,18 @@ package Allegro5.Events is
    function al_get_event_source_data (arg1 : System.Address) return stdint.intptr_t;
    pragma Import (C, al_get_event_source_data, "al_get_event_source_data");
 
-   subtype ALLEGRO_EVENT_QUEUE is Extensions.opaque_structure_def;
+   type ALLEGRO_EVENT_QUEUE is new System.Address;
 
-   function al_create_event_queue return System.Address;
+   function al_create_event_queue return ALLEGRO_EVENT_QUEUE;
    pragma Import (C, al_create_event_queue, "al_create_event_queue");
 
-   procedure al_destroy_event_queue (arg1 : System.Address);
+   procedure al_destroy_event_queue (arg1 : ALLEGRO_EVENT_QUEUE);
    pragma Import (C, al_destroy_event_queue, "al_destroy_event_queue");
 
-   procedure al_register_event_source (arg1 : System.Address; arg2 : access ALLEGRO_EVENT_SOURCE);
+   procedure al_register_event_source (arg1 : ALLEGRO_EVENT_QUEUE; arg2 : access ALLEGRO_EVENT_SOURCE);
    pragma Import (C, al_register_event_source, "al_register_event_source");
 
-   procedure al_unregister_event_source (arg1 : System.Address; arg2 : access ALLEGRO_EVENT_SOURCE);
+   procedure al_unregister_event_source (arg1 : ALLEGRO_EVENT_QUEUE; arg2 : access ALLEGRO_EVENT_SOURCE);
    pragma Import (C, al_unregister_event_source, "al_unregister_event_source");
 
    function al_is_event_queue_empty (arg1 : System.Address) return Extensions.bool;
@@ -188,7 +189,7 @@ package Allegro5.Events is
    procedure al_flush_event_queue (arg1 : System.Address);
    pragma Import (C, al_flush_event_queue, "al_flush_event_queue");
 
-   procedure al_wait_for_event (arg1 : System.Address; ret_event : access ALLEGRO_EVENT);
+   procedure al_wait_for_event (arg1 : ALLEGRO_EVENT_QUEUE; ret_event : access ALLEGRO_EVENT);
    pragma Import (C, al_wait_for_event, "al_wait_for_event");
 
    function al_wait_for_event_timed

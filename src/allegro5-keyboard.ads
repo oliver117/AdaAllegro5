@@ -5,6 +5,7 @@ with System;
 
 with Allegro5.Display;
 limited with Allegro5.Events;
+with Allegro5.Keycodes;
 
 use Allegro5;
 
@@ -30,13 +31,13 @@ package Allegro5.Keyboard is
    function al_set_keyboard_leds (leds : int) return Extensions.bool;
    pragma Import (C, al_set_keyboard_leds, "al_set_keyboard_leds");
 
-   function al_keycode_to_name (keycode : int) return Interfaces.C.Strings.chars_ptr;
+   function al_keycode_to_name (keycode : Keycodes.ALLEGRO_KEYCODE) return Interfaces.C.Strings.chars_ptr;
    pragma Import (C, al_keycode_to_name, "al_keycode_to_name");
 
    procedure al_get_keyboard_state (ret_state : access ALLEGRO_KEYBOARD_STATE);
    pragma Import (C, al_get_keyboard_state, "al_get_keyboard_state");
 
-   function al_key_down (arg1 : ALLEGRO_KEYBOARD_STATE; keycode : int) return Extensions.bool;
+   function al_key_down (arg1 : ALLEGRO_KEYBOARD_STATE; keycode : Keycodes.ALLEGRO_KEYCODE) return Extensions.bool;
    pragma Import (C, al_key_down, "al_key_down");
 
    function al_get_keyboard_event_source return access Allegro5.Events.ALLEGRO_EVENT_SOURCE;

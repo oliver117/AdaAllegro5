@@ -20,6 +20,7 @@ http://alleg.sourceforge.net/
 * keyboard
 * memory
 * utf8
+* add allegro event constants
 
 ### fix
 
