@@ -17,6 +17,28 @@ package Allegro5.Events is
    function ALLEGRO_GET_EVENT_TYPE(a : int; b : int; c : int; d : int) return int renames Allegro5.Base.AL_ID;
 
    subtype ALLEGRO_EVENT_TYPE is unsigned;
+   ALLEGRO_EVENT_JOYSTICK_AXIS : constant ALLEGRO_EVENT_TYPE := 1;
+   ALLEGRO_EVENT_JOYSTICK_BUTTON_DOWN : constant ALLEGRO_EVENT_TYPE := 2;
+   ALLEGRO_EVENT_JOYSTICK_BUTTON_UP : constant ALLEGRO_EVENT_TYPE := 3;
+   ALLEGRO_EVENT_JOYSTICK_CONFIGURATION : constant ALLEGRO_EVENT_TYPE := 4;
+   ALLEGRO_EVENT_KEY_DOWN : constant ALLEGRO_EVENT_TYPE := 10;
+   ALLEGRO_EVENT_KEY_CHAR : constant ALLEGRO_EVENT_TYPE := 11;
+   ALLEGRO_EVENT_KEY_UP : constant ALLEGRO_EVENT_TYPE := 12;
+   ALLEGRO_EVENT_MOUSE_AXES : constant ALLEGRO_EVENT_TYPE := 20;
+   ALLEGRO_EVENT_MOUSE_BUTTON_DOWN : constant ALLEGRO_EVENT_TYPE := 21;
+   ALLEGRO_EVENT_MOUSE_BUTTON_UP : constant ALLEGRO_EVENT_TYPE := 22;
+   ALLEGRO_EVENT_MOUSE_ENTER_DISPLAY : constant ALLEGRO_EVENT_TYPE := 23;
+   ALLEGRO_EVENT_MOUSE_LEAVE_DISPLAY : constant ALLEGRO_EVENT_TYPE := 24;
+   ALLEGRO_EVENT_MOUSE_WARPED : constant ALLEGRO_EVENT_TYPE := 25;
+   ALLEGRO_EVENT_TIMER : constant ALLEGRO_EVENT_TYPE := 30;
+   ALLEGRO_EVENT_DISPLAY_EXPOSE : constant ALLEGRO_EVENT_TYPE := 40;
+   ALLEGRO_EVENT_DISPLAY_RESIZE : constant ALLEGRO_EVENT_TYPE := 41;
+   ALLEGRO_EVENT_DISPLAY_CLOSE : constant ALLEGRO_EVENT_TYPE := 42;
+   ALLEGRO_EVENT_DISPLAY_LOST : constant ALLEGRO_EVENT_TYPE := 43;
+   ALLEGRO_EVENT_DISPLAY_FOUND : constant ALLEGRO_EVENT_TYPE := 44;
+   ALLEGRO_EVENT_DISPLAY_SWITCH_IN : constant ALLEGRO_EVENT_TYPE := 45;
+   ALLEGRO_EVENT_DISPLAY_SWITCH_OUT : constant ALLEGRO_EVENT_TYPE := 46;
+   ALLEGRO_EVENT_DISPLAY_ORIENTATION : constant ALLEGRO_EVENT_TYPE := 47;
 
    type ALLEGRO_EVENT_SOURCE_uu_pad_array is array (0 .. 31) of aliased int;
    type ALLEGRO_EVENT_SOURCE is record
@@ -165,41 +187,41 @@ package Allegro5.Events is
    function al_create_event_queue return ALLEGRO_EVENT_QUEUE;
    pragma Import (C, al_create_event_queue, "al_create_event_queue");
 
-   procedure al_destroy_event_queue (arg1 : ALLEGRO_EVENT_QUEUE);
+   procedure al_destroy_event_queue (queue : ALLEGRO_EVENT_QUEUE);
    pragma Import (C, al_destroy_event_queue, "al_destroy_event_queue");
 
-   procedure al_register_event_source (arg1 : ALLEGRO_EVENT_QUEUE; arg2 : access ALLEGRO_EVENT_SOURCE);
+   procedure al_register_event_source (queue : ALLEGRO_EVENT_QUEUE; arg2 : access ALLEGRO_EVENT_SOURCE);
    pragma Import (C, al_register_event_source, "al_register_event_source");
 
-   procedure al_unregister_event_source (arg1 : ALLEGRO_EVENT_QUEUE; arg2 : access ALLEGRO_EVENT_SOURCE);
+   procedure al_unregister_event_source (queue : ALLEGRO_EVENT_QUEUE; arg2 : access ALLEGRO_EVENT_SOURCE);
    pragma Import (C, al_unregister_event_source, "al_unregister_event_source");
 
-   function al_is_event_queue_empty (arg1 : System.Address) return Extensions.bool;
+   function al_is_event_queue_empty (queue : ALLEGRO_EVENT_QUEUE) return Extensions.bool;
    pragma Import (C, al_is_event_queue_empty, "al_is_event_queue_empty");
 
-   function al_get_next_event (arg1 : System.Address; ret_event : access ALLEGRO_EVENT) return Extensions.bool;
+   function al_get_next_event (queue : ALLEGRO_EVENT_QUEUE; ret_event : access ALLEGRO_EVENT) return Extensions.bool;
    pragma Import (C, al_get_next_event, "al_get_next_event");
 
-   function al_peek_next_event (arg1 : System.Address; ret_event : access ALLEGRO_EVENT) return Extensions.bool;
+   function al_peek_next_event (queue : ALLEGRO_EVENT_QUEUE; ret_event : access ALLEGRO_EVENT) return Extensions.bool;
    pragma Import (C, al_peek_next_event, "al_peek_next_event");
 
-   function al_drop_next_event (arg1 : System.Address) return Extensions.bool;
+   function al_drop_next_event (queue : ALLEGRO_EVENT_QUEUE) return Extensions.bool;
    pragma Import (C, al_drop_next_event, "al_drop_next_event");
 
-   procedure al_flush_event_queue (arg1 : System.Address);
+   procedure al_flush_event_queue (queue : ALLEGRO_EVENT_QUEUE);
    pragma Import (C, al_flush_event_queue, "al_flush_event_queue");
 
-   procedure al_wait_for_event (arg1 : ALLEGRO_EVENT_QUEUE; ret_event : access ALLEGRO_EVENT);
+   procedure al_wait_for_event (queue : ALLEGRO_EVENT_QUEUE; ret_event : access ALLEGRO_EVENT);
    pragma Import (C, al_wait_for_event, "al_wait_for_event");
 
    function al_wait_for_event_timed
-     (arg1 : System.Address;
+     (queue : ALLEGRO_EVENT_QUEUE;
       ret_event : access ALLEGRO_EVENT;
       secs : float) return Extensions.bool;
    pragma Import (C, al_wait_for_event_timed, "al_wait_for_event_timed");
 
    function al_wait_for_event_until
-     (queue : System.Address;
+     (queue : ALLEGRO_EVENT_QUEUE;
       ret_event : access ALLEGRO_EVENT;
       timeout : access Allegro5.Altime.ALLEGRO_TIMEOUT) return Extensions.bool;
    pragma Import (C, al_wait_for_event_until, "al_wait_for_event_until");
