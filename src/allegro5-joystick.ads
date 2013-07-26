@@ -1,13 +1,14 @@
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
-with System;
 with Interfaces.C.Strings;
+with System;
+
 limited with Allegro5.Events;
 
 
 package Allegro5.Joystick is
 
-   subtype ALLEGRO_JOYSTICK is Extensions.opaque_structure_def;
+   type ALLEGRO_JOYSTICK is new System.Address;
 
    type ALLEGRO_JOYSTICK_STATE_axis_array is array (0 .. 2) of aliased float;
 
@@ -47,40 +48,40 @@ package Allegro5.Joystick is
    function al_get_joystick (joyn : int) return ALLEGRO_JOYSTICK;
    pragma Import (C, al_get_joystick, "al_get_joystick");
 
-   procedure al_release_joystick (arg1 : ALLEGRO_JOYSTICK);
+   procedure al_release_joystick (joy : ALLEGRO_JOYSTICK);
    pragma Import (C, al_release_joystick, "al_release_joystick");
 
-   function al_get_joystick_active (arg1 : ALLEGRO_JOYSTICK) return Extensions.bool;
+   function al_get_joystick_active (joy : ALLEGRO_JOYSTICK) return Extensions.bool;
    pragma Import (C, al_get_joystick_active, "al_get_joystick_active");
 
-   function al_get_joystick_name (arg1 : ALLEGRO_JOYSTICK) return Interfaces.C.Strings.chars_ptr;
+   function al_get_joystick_name (joy : ALLEGRO_JOYSTICK) return Interfaces.C.Strings.chars_ptr;
    pragma Import (C, al_get_joystick_name, "al_get_joystick_name");
 
-   function al_get_joystick_num_sticks (arg1 : System.Address) return int;
+   function al_get_joystick_num_sticks (joy : ALLEGRO_JOYSTICK) return int;
    pragma Import (C, al_get_joystick_num_sticks, "al_get_joystick_num_sticks");
 
-   function al_get_joystick_stick_flags (arg1 : System.Address; stick : int) return int;
+   function al_get_joystick_stick_flags (joy : ALLEGRO_JOYSTICK; stick : int) return int;
    pragma Import (C, al_get_joystick_stick_flags, "al_get_joystick_stick_flags");
 
-   function al_get_joystick_stick_name (arg1 : System.Address; stick : int) return Interfaces.C.Strings.chars_ptr;
+   function al_get_joystick_stick_name (joy : ALLEGRO_JOYSTICK; stick : int) return Interfaces.C.Strings.chars_ptr;
    pragma Import (C, al_get_joystick_stick_name, "al_get_joystick_stick_name");
 
-   function al_get_joystick_num_axes (arg1 : System.Address; stick : int) return int;
+   function al_get_joystick_num_axes (joy : ALLEGRO_JOYSTICK; stick : int) return int;
    pragma Import (C, al_get_joystick_num_axes, "al_get_joystick_num_axes");
 
    function al_get_joystick_axis_name
-     (arg1 : System.Address;
+     (joy : ALLEGRO_JOYSTICK;
       stick : int;
       axis : int) return Interfaces.C.Strings.chars_ptr;
    pragma Import (C, al_get_joystick_axis_name, "al_get_joystick_axis_name");
 
-   function al_get_joystick_num_buttons (arg1 : System.Address) return int;
+   function al_get_joystick_num_buttons (joy : ALLEGRO_JOYSTICK) return int;
    pragma Import (C, al_get_joystick_num_buttons, "al_get_joystick_num_buttons");
 
-   function al_get_joystick_button_name (arg1 : System.Address; buttonn : int) return Interfaces.C.Strings.chars_ptr;
+   function al_get_joystick_button_name (joy : ALLEGRO_JOYSTICK; buttonn : int) return Interfaces.C.Strings.chars_ptr;
    pragma Import (C, al_get_joystick_button_name, "al_get_joystick_button_name");
 
-   procedure al_get_joystick_state (arg1 : ALLEGRO_JOYSTICK; ret_state : ALLEGRO_JOYSTICK_STATE);
+   procedure al_get_joystick_state (joy : ALLEGRO_JOYSTICK; ret_state : ALLEGRO_JOYSTICK_STATE);
    pragma Import (C, al_get_joystick_state, "al_get_joystick_state");
 
    function al_get_joystick_event_source return access Allegro5.Events.ALLEGRO_EVENT_SOURCE;

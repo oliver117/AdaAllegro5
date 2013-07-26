@@ -1,7 +1,7 @@
 with Interfaces.C; use Interfaces.C;
+with Interfaces.C.Extensions;
 with Interfaces.C.Strings;
 with System;
-with Interfaces.C.Extensions;
 with stdint;
 
 
@@ -31,74 +31,74 @@ package Allegro5.UTF8 is
    procedure al_ustr_free (us : access ALLEGRO_USTR);
    pragma Import (C, al_ustr_free, "al_ustr_free");
 
-   function al_cstr (us : System.Address) return Interfaces.C.Strings.chars_ptr;
+   function al_cstr (us : ALLEGRO_USTR) return Interfaces.C.Strings.chars_ptr;
    pragma Import (C, al_cstr, "al_cstr");
 
    procedure al_ustr_to_buffer
-     (us : System.Address;
+     (us : ALLEGRO_USTR;
       buffer : Interfaces.C.Strings.chars_ptr;
       size : int);
    pragma Import (C, al_ustr_to_buffer, "al_ustr_to_buffer");
 
-   function al_cstr_dup (us : System.Address) return Interfaces.C.Strings.chars_ptr;
+   function al_cstr_dup (us : ALLEGRO_USTR) return Interfaces.C.Strings.chars_ptr;
    pragma Import (C, al_cstr_dup, "al_cstr_dup");
 
-   function al_ustr_dup (us : System.Address) return access ALLEGRO_USTR;
+   function al_ustr_dup (us : ALLEGRO_USTR) return access ALLEGRO_USTR;
    pragma Import (C, al_ustr_dup, "al_ustr_dup");
 
    function al_ustr_dup_substr
-     (us : System.Address;
+     (us : ALLEGRO_USTR;
       start_pos : int;
       end_pos : int) return access ALLEGRO_USTR;
    pragma Import (C, al_ustr_dup_substr, "al_ustr_dup_substr");
 
-   function al_ustr_empty_string return System.Address;
+   function al_ustr_empty_string return ALLEGRO_USTR;
    pragma Import (C, al_ustr_empty_string, "al_ustr_empty_string");
 
-   function al_ref_cstr (info : access ALLEGRO_USTR_INFO; s : Interfaces.C.Strings.chars_ptr) return System.Address;
+   function al_ref_cstr (info : access ALLEGRO_USTR_INFO; s : Interfaces.C.Strings.chars_ptr) return ALLEGRO_USTR;
    pragma Import (C, al_ref_cstr, "al_ref_cstr");
 
    function al_ref_buffer
      (info : access ALLEGRO_USTR_INFO;
       s : Interfaces.C.Strings.chars_ptr;
-      size : stdint.size_t) return System.Address;
+      size : stdint.size_t) return ALLEGRO_USTR;
    pragma Import (C, al_ref_buffer, "al_ref_buffer");
 
    function al_ref_ustr
      (info : access ALLEGRO_USTR_INFO;
-      us : System.Address;
+      us : ALLEGRO_USTR;
       start_pos : int;
-      end_pos : int) return System.Address;
+      end_pos : int) return ALLEGRO_USTR;
    pragma Import (C, al_ref_ustr, "al_ref_ustr");
 
-   function al_ustr_size (us : System.Address) return stdint.size_t;
+   function al_ustr_size (us : ALLEGRO_USTR) return stdint.size_t;
    pragma Import (C, al_ustr_size, "al_ustr_size");
 
-   function al_ustr_length (us : System.Address) return stdint.size_t;
+   function al_ustr_length (us : ALLEGRO_USTR) return stdint.size_t;
    pragma Import (C, al_ustr_length, "al_ustr_length");
 
-   function al_ustr_offset (us : System.Address; index : int) return int;
+   function al_ustr_offset (us : ALLEGRO_USTR; index : int) return int;
    pragma Import (C, al_ustr_offset, "al_ustr_offset");
 
-   function al_ustr_next (us : System.Address; pos : access int) return Extensions.bool;
+   function al_ustr_next (us : ALLEGRO_USTR; pos : access int) return Extensions.bool;
    pragma Import (C, al_ustr_next, "al_ustr_next");
 
-   function al_ustr_prev (us : System.Address; pos : access int) return Extensions.bool;
+   function al_ustr_prev (us : ALLEGRO_USTR; pos : access int) return Extensions.bool;
    pragma Import (C, al_ustr_prev, "al_ustr_prev");
 
-   function al_ustr_get (us : System.Address; pos : int) return stdint.int32_t;
+   function al_ustr_get (us : ALLEGRO_USTR; pos : int) return stdint.int32_t;
    pragma Import (C, al_ustr_get, "al_ustr_get");
 
-   function al_ustr_get_next (us : System.Address; pos : access int) return stdint.int32_t;
+   function al_ustr_get_next (us : ALLEGRO_USTR; pos : access int) return stdint.int32_t;
    pragma Import (C, al_ustr_get_next, "al_ustr_get_next");
 
-   function al_ustr_prev_get (us : System.Address; pos : access int) return stdint.int32_t;
+   function al_ustr_prev_get (us : ALLEGRO_USTR; pos : access int) return stdint.int32_t;
    pragma Import (C, al_ustr_prev_get, "al_ustr_prev_get");
 
    function al_ustr_insert
      (us1 : access ALLEGRO_USTR;
       pos : int;
-      us2 : System.Address) return Extensions.bool;
+      us2 : ALLEGRO_USTR) return Extensions.bool;
    pragma Import (C, al_ustr_insert, "al_ustr_insert");
 
    function al_ustr_insert_cstr
@@ -113,7 +113,7 @@ package Allegro5.UTF8 is
       c : stdint.int32_t) return stdint.size_t;
    pragma Import (C, al_ustr_insert_chr, "al_ustr_insert_chr");
 
-   function al_ustr_append (us1 : access ALLEGRO_USTR; us2 : System.Address) return Extensions.bool;
+   function al_ustr_append (us1 : access ALLEGRO_USTR; us2 : ALLEGRO_USTR) return Extensions.bool;
    pragma Import (C, al_ustr_append, "al_ustr_append");
 
    function al_ustr_append_cstr (us : access ALLEGRO_USTR; s : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
@@ -152,12 +152,12 @@ package Allegro5.UTF8 is
    function al_ustr_trim_ws (us : access ALLEGRO_USTR) return Extensions.bool;
    pragma Import (C, al_ustr_trim_ws, "al_ustr_trim_ws");
 
-   function al_ustr_assign (us1 : access ALLEGRO_USTR; us2 : System.Address) return Extensions.bool;
+   function al_ustr_assign (us1 : access ALLEGRO_USTR; us2 : ALLEGRO_USTR) return Extensions.bool;
    pragma Import (C, al_ustr_assign, "al_ustr_assign");
 
    function al_ustr_assign_substr
      (us1 : access ALLEGRO_USTR;
-      us2 : System.Address;
+      us2 : ALLEGRO_USTR;
       start_pos : int;
       end_pos : int) return Extensions.bool;
    pragma Import (C, al_ustr_assign_substr, "al_ustr_assign_substr");
@@ -175,65 +175,65 @@ package Allegro5.UTF8 is
      (us1 : access ALLEGRO_USTR;
       start_pos1 : int;
       end_pos1 : int;
-      us2 : System.Address) return Extensions.bool;
+      us2 : ALLEGRO_USTR) return Extensions.bool;
    pragma Import (C, al_ustr_replace_range, "al_ustr_replace_range");
 
    function al_ustr_find_chr
-     (us : System.Address;
+     (us : ALLEGRO_USTR;
       start_pos : int;
       c : stdint.int32_t) return int;
    pragma Import (C, al_ustr_find_chr, "al_ustr_find_chr");
 
    function al_ustr_rfind_chr
-     (us : System.Address;
+     (us : ALLEGRO_USTR;
       start_pos : int;
       c : stdint.int32_t) return int;
    pragma Import (C, al_ustr_rfind_chr, "al_ustr_rfind_chr");
 
    function al_ustr_find_set
-     (us : System.Address;
+     (us : ALLEGRO_USTR;
       start_pos : int;
-      c_accept : System.Address) return int;
+      c_accept : ALLEGRO_USTR) return int;
    pragma Import (C, al_ustr_find_set, "al_ustr_find_set");
 
    function al_ustr_find_set_cstr
-     (us : System.Address;
+     (us : ALLEGRO_USTR;
       start_pos : int;
       c_accept : Interfaces.C.Strings.chars_ptr) return int;
    pragma Import (C, al_ustr_find_set_cstr, "al_ustr_find_set_cstr");
 
    function al_ustr_find_cset
-     (us : System.Address;
+     (us : ALLEGRO_USTR;
       start_pos : int;
-      reject : System.Address) return int;
+      reject : ALLEGRO_USTR) return int;
    pragma Import (C, al_ustr_find_cset, "al_ustr_find_cset");
 
    function al_ustr_find_cset_cstr
-     (us : System.Address;
+     (us : ALLEGRO_USTR;
       start_pos : int;
       reject : Interfaces.C.Strings.chars_ptr) return int;
    pragma Import (C, al_ustr_find_cset_cstr, "al_ustr_find_cset_cstr");
 
    function al_ustr_find_str
-     (haystack : System.Address;
+     (haystack : ALLEGRO_USTR;
       start_pos : int;
-      needle : System.Address) return int;
+      needle : ALLEGRO_USTR) return int;
    pragma Import (C, al_ustr_find_str, "al_ustr_find_str");
 
    function al_ustr_find_cstr
-     (haystack : System.Address;
+     (haystack : ALLEGRO_USTR;
       start_pos : int;
       needle : Interfaces.C.Strings.chars_ptr) return int;
    pragma Import (C, al_ustr_find_cstr, "al_ustr_find_cstr");
 
    function al_ustr_rfind_str
-     (haystack : System.Address;
+     (haystack : ALLEGRO_USTR;
       start_pos : int;
-      needle : System.Address) return int;
+      needle : ALLEGRO_USTR) return int;
    pragma Import (C, al_ustr_rfind_str, "al_ustr_rfind_str");
 
    function al_ustr_rfind_cstr
-     (haystack : System.Address;
+     (haystack : ALLEGRO_USTR;
       start_pos : int;
       needle : Interfaces.C.Strings.chars_ptr) return int;
    pragma Import (C, al_ustr_rfind_cstr, "al_ustr_rfind_cstr");
@@ -241,8 +241,8 @@ package Allegro5.UTF8 is
    function al_ustr_find_replace
      (us : access ALLEGRO_USTR;
       start_pos : int;
-      find : System.Address;
-      replace : System.Address) return Extensions.bool;
+      find : ALLEGRO_USTR;
+      replace : ALLEGRO_USTR) return Extensions.bool;
    pragma Import (C, al_ustr_find_replace, "al_ustr_find_replace");
 
    function al_ustr_find_replace_cstr
@@ -252,28 +252,28 @@ package Allegro5.UTF8 is
       replace : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
    pragma Import (C, al_ustr_find_replace_cstr, "al_ustr_find_replace_cstr");
 
-   function al_ustr_equal (us1 : System.Address; us2 : System.Address) return Extensions.bool;
+   function al_ustr_equal (us1 : ALLEGRO_USTR; us2 : ALLEGRO_USTR) return Extensions.bool;
    pragma Import (C, al_ustr_equal, "al_ustr_equal");
 
-   function al_ustr_compare (u : System.Address; v : System.Address) return int;
+   function al_ustr_compare (u : ALLEGRO_USTR; v : ALLEGRO_USTR) return int;
    pragma Import (C, al_ustr_compare, "al_ustr_compare");
 
    function al_ustr_ncompare
-     (us1 : System.Address;
-      us2 : System.Address;
+     (us1 : ALLEGRO_USTR;
+      us2 : ALLEGRO_USTR;
       n : int) return int;
    pragma Import (C, al_ustr_ncompare, "al_ustr_ncompare");
 
-   function al_ustr_has_prefix (u : System.Address; v : System.Address) return Extensions.bool;
+   function al_ustr_has_prefix (u : ALLEGRO_USTR; v : ALLEGRO_USTR) return Extensions.bool;
    pragma Import (C, al_ustr_has_prefix, "al_ustr_has_prefix");
 
-   function al_ustr_has_prefix_cstr (u : System.Address; s : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
+   function al_ustr_has_prefix_cstr (u : ALLEGRO_USTR; s : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
    pragma Import (C, al_ustr_has_prefix_cstr, "al_ustr_has_prefix_cstr");
 
-   function al_ustr_has_suffix (u : System.Address; v : System.Address) return Extensions.bool;
+   function al_ustr_has_suffix (u : ALLEGRO_USTR; v : ALLEGRO_USTR) return Extensions.bool;
    pragma Import (C, al_ustr_has_suffix, "al_ustr_has_suffix");
 
-   function al_ustr_has_suffix_cstr (us1 : System.Address; s : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
+   function al_ustr_has_suffix_cstr (us1 : ALLEGRO_USTR; s : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
    pragma Import (C, al_ustr_has_suffix_cstr, "al_ustr_has_suffix_cstr");
 
    function al_utf8_width (c : stdint.int32_t) return stdint.size_t;
@@ -285,11 +285,11 @@ package Allegro5.UTF8 is
    function al_ustr_new_from_utf16 (s : access stdint.uint16_t) return access ALLEGRO_USTR;
    pragma Import (C, al_ustr_new_from_utf16, "al_ustr_new_from_utf16");
 
-   function al_ustr_size_utf16 (us : System.Address) return stdint.size_t;
+   function al_ustr_size_utf16 (us : ALLEGRO_USTR) return stdint.size_t;
    pragma Import (C, al_ustr_size_utf16, "al_ustr_size_utf16");
 
    function al_ustr_encode_utf16
-     (us : System.Address;
+     (us : ALLEGRO_USTR;
       s : access stdint.uint16_t;
       n : stdint.size_t) return stdint.size_t;
    pragma Import (C, al_ustr_encode_utf16, "al_ustr_encode_utf16");

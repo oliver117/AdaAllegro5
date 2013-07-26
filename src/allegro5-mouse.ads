@@ -8,6 +8,8 @@ limited with Allegro5.Events;
 
 package Allegro5.Mouse is
 
+   type ALLEGRO_MOUSE is new System.Address;
+
    ALLEGRO_MOUSE_MAX_EXTRA_AXES : constant := 4;
 
    type ALLEGRO_MOUSE_STATE_more_axes_array is array (0 .. 3) of aliased int;

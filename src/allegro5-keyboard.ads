@@ -12,6 +12,8 @@ use Allegro5;
 
 package Allegro5.Keyboard is
 
+   type ALLEGRO_KEYBOARD is new System.Address;
+
    type ALLEGRO_KEYBOARD_STATE_uu_key_down_u_internal_u_u_array is array (0 .. 7) of aliased unsigned;
    type ALLEGRO_KEYBOARD_STATE is record
       display : Allegro5.Display.ALLEGRO_DISPLAY;

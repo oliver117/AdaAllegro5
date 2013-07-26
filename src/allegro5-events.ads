@@ -5,12 +5,21 @@ with System;
 
 limited with Allegro5.Altime;
 with Allegro5.Base;
+with Allegro5.Display;
+with Allegro5.Joystick;
+with Allegro5.Keyboard;
 with Allegro5.Keycodes;
+with Allegro5.Mouse;
+with Allegro5.Timer;
 
 use Allegro5;
 
 
 package Allegro5.Events is
+
+   type ALLEGRO_USER_EVENT_DESCRIPTOR is new System.Address;
+
+   type ALLEGRO_EVENT_QUEUE is new System.Address;
 
    function ALLEGRO_EVENT_TYPE_IS_USER (t : unsigned) return Extensions.bool;
 
@@ -55,7 +64,7 @@ package Allegro5.Events is
 
    type ALLEGRO_DISPLAY_EVENT is record
       c_type : aliased ALLEGRO_EVENT_TYPE;
-      source : System.Address;
+      source : Display.ALLEGRO_DISPLAY;
       timestamp : aliased double;
       x : aliased int;
       y : aliased int;
@@ -65,13 +74,11 @@ package Allegro5.Events is
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_DISPLAY_EVENT);
 
-   type ALLEGRO_DISPLAY is new System.Address;
-
    type ALLEGRO_JOYSTICK_EVENT is record
       c_type : aliased ALLEGRO_EVENT_TYPE;
-      source : System.Address;
+      source : Joystick.ALLEGRO_JOYSTICK;
       timestamp : aliased double;
-      id : System.Address;
+      id : Joystick.ALLEGRO_JOYSTICK;
       stick : aliased int;
       axis : aliased int;
       pos : aliased float;
@@ -81,9 +88,9 @@ package Allegro5.Events is
 
    type ALLEGRO_KEYBOARD_EVENT is record
       c_type : aliased ALLEGRO_EVENT_TYPE;
-      source : System.Address;
+      source : Keyboard.ALLEGRO_KEYBOARD;
       timestamp : aliased double;
-      display : System.Address;
+      display : Allegro5.Display.ALLEGRO_DISPLAY;
       keycode : aliased Keycodes.ALLEGRO_KEYCODE;
       unichar : aliased int;
       modifiers : aliased Keycodes.ALLEGRO_KEYMOD;
@@ -95,9 +102,9 @@ package Allegro5.Events is
 
    type ALLEGRO_MOUSE_EVENT is record
       c_type : aliased ALLEGRO_EVENT_TYPE;
-      source : System.Address;
+      source : Mouse.ALLEGRO_MOUSE;
       timestamp : aliased double;
-      display : System.Address;
+      display : Allegro5.Display.ALLEGRO_DISPLAY;
       x : aliased int;
       y : aliased int;
       z : aliased int;
@@ -115,28 +122,24 @@ package Allegro5.Events is
 
    type ALLEGRO_TIMER_EVENT is record
       c_type : aliased ALLEGRO_EVENT_TYPE;
-      source : System.Address;
+      source : Timer.ALLEGRO_TIMER;
       timestamp : aliased double;
       count : aliased stdint.int64_t;
       error : aliased double;
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_TIMER_EVENT);
 
-   subtype ALLEGRO_TIMER is Extensions.opaque_structure_def;
-
    type ALLEGRO_USER_EVENT is record
       c_type : aliased ALLEGRO_EVENT_TYPE;
       source : access ALLEGRO_EVENT_SOURCE;
       timestamp : aliased double;
-      uu_internal_u_descr : System.Address;
+      uu_internal_u_descr : ALLEGRO_USER_EVENT_DESCRIPTOR;
       data1 : aliased stdint.intptr_t;
       data2 : aliased stdint.intptr_t;
       data3 : aliased stdint.intptr_t;
       data4 : aliased stdint.intptr_t;
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_USER_EVENT);
-
-   subtype ALLEGRO_USER_EVENT_DESCRIPTOR is Extensions.opaque_structure_def;
 
    type ALLEGRO_EVENT (discr : unsigned := 0) is record
       case discr is
@@ -179,10 +182,8 @@ package Allegro5.Events is
    procedure al_set_event_source_data (arg1 : access ALLEGRO_EVENT_SOURCE; data : stdint.intptr_t);
    pragma Import (C, al_set_event_source_data, "al_set_event_source_data");
 
-   function al_get_event_source_data (arg1 : System.Address) return stdint.intptr_t;
+   function al_get_event_source_data (arg1 : ALLEGRO_EVENT_SOURCE) return stdint.intptr_t;
    pragma Import (C, al_get_event_source_data, "al_get_event_source_data");
-
-   type ALLEGRO_EVENT_QUEUE is new System.Address;
 
    function al_create_event_queue return ALLEGRO_EVENT_QUEUE;
    pragma Import (C, al_create_event_queue, "al_create_event_queue");
