@@ -8,10 +8,18 @@ package Allegro5.Memory is
 
    --  arg-macro: function al_malloc (n)
    --    return al_malloc_with_context((n), __LINE__, __FILE__, __func__);
+   function al_malloc_with_context (stdint.size_t n; int line; Interfaces.C.Strings.chars_ptr file, Interfaces.C.Strings.chars_ptr func) return System.Address;
+
+
+
    --  arg-macro: function al_free (p)
    --    return al_free_with_context((p), __LINE__, __FILE__, __func__);
+
+
    --  arg-macro: function al_realloc (p, n)
    --    return al_realloc_with_context((p), (n), __LINE__, __FILE__, __func__);
+
+
    --  arg-macro: function al_calloc (c, n)
    --    return al_calloc_with_context((c), (n), __LINE__, __FILE__, __func__);
    type ALLEGRO_MEMORY_INTERFACE is record

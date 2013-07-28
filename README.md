@@ -8,12 +8,15 @@ http://alleg.sourceforge.net/
 
 ## TODO
 
+### Testing
+
+* everything
+
 ### Cleanup
 
 * debug
 * fixed
 * fmaths
-* fshook
 * inline_fmaths
 * memory
 

@@ -1,6 +1,6 @@
 with Interfaces.C; use Interfaces.C;
-with Interfaces.C.Strings;
 with Interfaces.C.Extensions;
+with Interfaces.C.Strings;
 with stdint;
 with System;
 
@@ -24,26 +24,26 @@ package Allegro5.Fshook is
    ALLEGRO_FILEMODE_ISDIR : constant ALLEGRO_FILE_MODE := 32;
 
    type ALLEGRO_FS_INTERFACE is record
-      fs_create_entry : access function (arg1 : Interfaces.C.Strings.chars_ptr) return access ALLEGRO_FS_ENTRY;
-      fs_destroy_entry : access procedure (arg1 : access ALLEGRO_FS_ENTRY);
-      fs_entry_name : access function (arg1 : access ALLEGRO_FS_ENTRY) return Interfaces.C.Strings.chars_ptr;
-      fs_update_entry : access function (arg1 : access ALLEGRO_FS_ENTRY) return Extensions.bool;
-      fs_entry_mode : access function (arg1 : access ALLEGRO_FS_ENTRY) return stdint.uint32_t;
-      fs_entry_atime : access function (arg1 : access ALLEGRO_FS_ENTRY) return stdint.time_t;
-      fs_entry_mtime : access function (arg1 : access ALLEGRO_FS_ENTRY) return stdint.time_t;
-      fs_entry_ctime : access function (arg1 : access ALLEGRO_FS_ENTRY) return stdint.time_t;
-      fs_entry_size : access function (arg1 : access ALLEGRO_FS_ENTRY) return stdint.off_t;
-      fs_entry_exists : access function (arg1 : access ALLEGRO_FS_ENTRY) return Extensions.bool;
-      fs_remove_entry : access function (arg1 : access ALLEGRO_FS_ENTRY) return Extensions.bool;
-      fs_open_directory : access function (arg1 : access ALLEGRO_FS_ENTRY) return Extensions.bool;
-      fs_read_directory : access function (arg1 : access ALLEGRO_FS_ENTRY) return access ALLEGRO_FS_ENTRY;
-      fs_close_directory : access function (arg1 : access ALLEGRO_FS_ENTRY) return Extensions.bool;
-      fs_filename_exists : access function (arg1 : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
-      fs_remove_filename : access function (arg1 : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
+      fs_create_entry : access function (path : Interfaces.C.Strings.chars_ptr) return access ALLEGRO_FS_ENTRY;
+      fs_destroy_entry : access procedure (e : access ALLEGRO_FS_ENTRY);
+      fs_entry_name : access function (e : access ALLEGRO_FS_ENTRY) return Interfaces.C.Strings.chars_ptr;
+      fs_update_entry : access function (e : access ALLEGRO_FS_ENTRY) return Extensions.bool;
+      fs_entry_mode : access function (e : access ALLEGRO_FS_ENTRY) return stdint.uint32_t;
+      fs_entry_atime : access function (e : access ALLEGRO_FS_ENTRY) return stdint.time_t;
+      fs_entry_mtime : access function (e : access ALLEGRO_FS_ENTRY) return stdint.time_t;
+      fs_entry_ctime : access function (e : access ALLEGRO_FS_ENTRY) return stdint.time_t;
+      fs_entry_size : access function (e : access ALLEGRO_FS_ENTRY) return stdint.off_t;
+      fs_entry_exists : access function (e : access ALLEGRO_FS_ENTRY) return Extensions.bool;
+      fs_remove_entry : access function (e : access ALLEGRO_FS_ENTRY) return Extensions.bool;
+      fs_open_directory : access function (e : access ALLEGRO_FS_ENTRY) return Extensions.bool;
+      fs_read_directory : access function (e : access ALLEGRO_FS_ENTRY) return access ALLEGRO_FS_ENTRY;
+      fs_close_directory : access function (e : access ALLEGRO_FS_ENTRY) return Extensions.bool;
+      fs_filename_exists : access function (path : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
+      fs_remove_filename : access function (path : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
       fs_get_current_directory : access function return Interfaces.C.Strings.chars_ptr;
-      fs_change_directory : access function (arg1 : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
-      fs_make_directory : access function (arg1 : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
-      fs_open_file : access function (arg1 : access ALLEGRO_FS_ENTRY; arg2 : Interfaces.C.Strings.chars_ptr) return System.Address;
+      fs_change_directory : access function (path : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
+      fs_make_directory : access function (path : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
+      fs_open_file : access function (e : access ALLEGRO_FS_ENTRY; mode : Interfaces.C.Strings.chars_ptr) return File.ALLEGRO_FILE;
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_FS_INTERFACE);
 
@@ -104,13 +104,13 @@ package Allegro5.Fshook is
    function al_make_directory (path : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
    pragma Import (C, al_make_directory, "al_make_directory");
 
-   function al_open_fs_entry (e : access ALLEGRO_FS_ENTRY; mode : Interfaces.C.Strings.chars_ptr) return System.Address;
+   function al_open_fs_entry (e : access ALLEGRO_FS_ENTRY; mode : Interfaces.C.Strings.chars_ptr) return File.ALLEGRO_FILE;
    pragma Import (C, al_open_fs_entry, "al_open_fs_entry");
 
-   function al_get_fs_interface return System.Address;
+   function al_get_fs_interface return ALLEGRO_FS_INTERFACE;
    pragma Import (C, al_get_fs_interface, "al_get_fs_interface");
 
-   procedure al_set_fs_interface (vtable : System.Address);
+   procedure al_set_fs_interface (vtable : ALLEGRO_FS_INTERFACE);
    pragma Import (C, al_set_fs_interface, "al_set_fs_interface");
 
    procedure al_set_standard_fs_interface;
