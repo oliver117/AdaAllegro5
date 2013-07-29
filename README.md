@@ -37,3 +37,5 @@ done for:
 * bitmap
 * image addon
 * mouse
+* mouse_cursor
+* joystick
