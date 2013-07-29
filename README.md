@@ -12,10 +12,6 @@ http://alleg.sourceforge.net/
 
 * everything
 
-### cleanup
-
-* debug
-
 ### fix
 
 * change stdint defs
@@ -33,6 +29,7 @@ done for:
 
 * altime
 * bitmap
+* bitmap_draw
 * debug
 * fixed
 * fmaths
