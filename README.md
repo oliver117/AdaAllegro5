@@ -8,14 +8,13 @@ http://alleg.sourceforge.net/
 
 ## TODO
 
-### Testing
+### testing
 
 * everything
 
-### Cleanup
+### cleanup
 
 * debug
-* memory
 
 ### fix
 
@@ -34,11 +33,13 @@ done for:
 
 * altime
 * bitmap
+* debug
 * fixed
 * fmaths
 * fmaths_inline
 * image addon
 * joystick
+* memory
 * monitor
 * mouse
 * mouse_cursor
