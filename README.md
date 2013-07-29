@@ -22,6 +22,7 @@ http://alleg.sourceforge.net/
 * change stdint defs
 * utf8 - va_list
 * merge fmaths_inline and fmaths?
+* move al_(get|set)_new_display_adapter to monitor?
 
 ### feature
 
@@ -38,5 +39,6 @@ done for:
 * fmaths_inline
 * image addon
 * joystick
+* monitor
 * mouse
 * mouse_cursor

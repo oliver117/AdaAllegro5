@@ -41,5 +41,8 @@ with Allegro5.UTF8;
 
 procedure Build_Check is
 begin
+   -- This file's purpose is to simply include all compilation units
+   -- of this project, so that it might be used as a build target in order
+   -- to check all the files for errors.
    null;
 end Build_Check;
