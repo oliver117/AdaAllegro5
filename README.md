@@ -28,3 +28,11 @@ http://alleg.sourceforge.net/
 ### feature
 
 * create bindings to addons
+
+## inline docs
+
+done for:
+
+* altime
+* bitmap
+* image addon
