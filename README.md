@@ -15,7 +15,6 @@ http://alleg.sourceforge.net/
 ### Cleanup
 
 * debug
-* fmaths
 * inline_fmaths
 * memory
 
@@ -23,6 +22,7 @@ http://alleg.sourceforge.net/
 
 * change stdint defs
 * utf8 - va_list
+* fmaths is missing "inline" routines
 
 ### feature
 
@@ -34,6 +34,7 @@ done for:
 
 * altime
 * bitmap
+* fixed
 * fmaths
 * image addon
 * joystick
