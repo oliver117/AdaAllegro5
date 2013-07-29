@@ -15,14 +15,13 @@ http://alleg.sourceforge.net/
 ### Cleanup
 
 * debug
-* inline_fmaths
 * memory
 
 ### fix
 
 * change stdint defs
 * utf8 - va_list
-* fmaths is missing "inline" routines
+* merge fmaths_inline and fmaths?
 
 ### feature
 
@@ -36,6 +35,7 @@ done for:
 * bitmap
 * fixed
 * fmaths
+* fmaths_inline
 * image addon
 * joystick
 * mouse
