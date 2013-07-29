@@ -8,7 +8,7 @@ package Allegro5.Memory is
 
    --  arg-macro: function al_malloc (n)
    --    return al_malloc_with_context((n), __LINE__, __FILE__, __func__);
-   function al_malloc_with_context (stdint.size_t n; int line; Interfaces.C.Strings.chars_ptr file, Interfaces.C.Strings.chars_ptr func) return System.Address;
+   --function al_malloc_with_context (stdint.size_t n; int line; Interfaces.C.Strings.chars_ptr file, Interfaces.C.Strings.chars_ptr func) return System.Address;
 
 
 

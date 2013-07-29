@@ -4,6 +4,10 @@ with Interfaces.C.Strings;
 with stdint;
 with System;
 
+with Allegro5.File;
+
+use Allegro5;
+
 
 package Allegro5.Fshook is
 
