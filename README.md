@@ -15,7 +15,6 @@ http://alleg.sourceforge.net/
 ### Cleanup
 
 * debug
-* fixed
 * fmaths
 * inline_fmaths
 * memory
@@ -35,7 +34,8 @@ done for:
 
 * altime
 * bitmap
+* fmaths
 * image addon
+* joystick
 * mouse
 * mouse_cursor
-* joystick
