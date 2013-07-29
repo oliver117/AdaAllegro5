@@ -36,3 +36,4 @@ done for:
 * altime
 * bitmap
 * image addon
+* mouse
