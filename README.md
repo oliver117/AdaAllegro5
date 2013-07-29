@@ -30,6 +30,7 @@ done for:
 * altime
 * bitmap
 * bitmap_draw
+* bitmap_io
 * debug
 * fixed
 * fmaths
