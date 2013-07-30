@@ -1,7 +1,8 @@
 with Allegro5;
 with Allegro5.Allegro;
-with Allegro5.Allegro.Primitives;
+with Allegro5.Allegro.Font;
 with Allegro5.Allegro.Image;
+with Allegro5.Allegro.Primitives;
 
 with Allegro5.Altime;
 with Allegro5.Base;

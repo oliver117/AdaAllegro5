@@ -33,6 +33,7 @@ done for:
 * bitmap_io
 * debug
 * fixed
+* font addon
 * fmaths
 * fmaths_inline
 * image addon
