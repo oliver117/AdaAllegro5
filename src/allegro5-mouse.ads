@@ -149,7 +149,7 @@ package Allegro5.Mouse is
    -- Retrieve the mouse event source.
    --
    -- Returns NULL if the mouse subsystem was not installed.
-   function al_get_mouse_event_source return access 
+   function al_get_mouse_event_source return access
      Allegro5.Events.ALLEGRO_EVENT_SOURCE;
    pragma Import (C, al_get_mouse_event_source, "al_get_mouse_event_source");
 

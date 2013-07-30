@@ -2,7 +2,6 @@ with Interfaces.C; use Interfaces.C;
 with stdint;
 with System;
 
-
 package Allegro5.Base is
 
    function AL_ID (a : int; b : int; c : int; d : int) return int;

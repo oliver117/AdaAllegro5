@@ -1,6 +1,5 @@
 with Interfaces.C; use Interfaces.C;
 
-
 package body Allegro5.Base is
 
    function AL_ID (a : int; b : int; c : int; d : int) return int is

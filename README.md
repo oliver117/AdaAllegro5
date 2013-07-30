@@ -19,16 +19,18 @@ http://alleg.sourceforge.net/
 * merge fmaths_inline and fmaths?
 * move al_(get|set)_new_display_adapter to monitor?
 * add missing flags in font addon package
+* formal params in audio addon
 
 ### feature
 
-* create bindings to addons
+* create bindings to addons (acodec)
 
 ## inline docs
 
 done for:
 
 * altime
+* audio
 * bitmap
 * bitmap_draw
 * bitmap_io

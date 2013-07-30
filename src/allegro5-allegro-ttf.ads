@@ -4,7 +4,7 @@ with Interfaces.C.Strings;
 
 with stdint;
 
-limited with Allegro5.Allegro.Font;
+with Allegro5.Allegro.Font;
 with Allegro5.File;
 
 package Allegro5.Allegro.TTF is

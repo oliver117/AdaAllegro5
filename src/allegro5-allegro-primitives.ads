@@ -6,9 +6,6 @@ with System;
 with Allegro5.Bitmap;
 with Allegro5.Color;
 
-use Allegro5;
-
-
 package Allegro5.Allegro.Primitives is
 
    ALLEGRO_VERTEX_CACHE_SIZE : constant := 256;

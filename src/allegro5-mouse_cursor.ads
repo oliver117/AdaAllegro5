@@ -5,8 +5,6 @@ with System;
 with Allegro5.Bitmap;
 with Allegro5.Display;
 
-use  Allegro5;
-
 package Allegro5.Mouse_Cursor is
 
    type ALLEGRO_MOUSE_CURSOR is private;

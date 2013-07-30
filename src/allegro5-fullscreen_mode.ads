@@ -1,6 +1,5 @@
 with Interfaces.C; use Interfaces.C;
 
-
 package Allegro5.Fullscreen_Mode is
 
    type ALLEGRO_DISPLAY_MODE is record

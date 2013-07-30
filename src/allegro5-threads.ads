@@ -2,8 +2,7 @@ with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
 with System;
 
-limited with Allegro5.Altime;
-
+with Allegro5.Altime;
 
 package Allegro5.Threads is
 

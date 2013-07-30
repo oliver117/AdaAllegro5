@@ -4,8 +4,6 @@ with System;
 with Allegro5.Bitmap;
 with Allegro5.Color;
 
-use  Allegro5;
-
 package Allegro5.Bitmap_Draw is
 
    -- Draws an unscaled, unrotated bitmap at the given position to the current

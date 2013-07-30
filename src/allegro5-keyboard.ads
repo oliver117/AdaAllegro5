@@ -7,8 +7,6 @@ with Allegro5.Display;
 limited with Allegro5.Events;
 with Allegro5.Keycodes;
 
-use Allegro5;
-
 
 package Allegro5.Keyboard is
 

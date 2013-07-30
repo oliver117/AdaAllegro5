@@ -6,9 +6,6 @@ with System;
 with Allegro5.Config;
 with Allegro5.Path;
 
-use Allegro5;
-
-
 package Allegro5.System is
 
    function al_init return Extensions.bool;

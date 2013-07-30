@@ -7,9 +7,6 @@ with System;
 with Allegro5.Path;
 with Allegro5.UTF8;
 
-use Allegro5;
-
-
 package Allegro5.File is
 
    type ALLEGRO_FILE is new System.Address;

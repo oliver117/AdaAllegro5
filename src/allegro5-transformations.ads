@@ -1,7 +1,6 @@
 with Interfaces.C; use Interfaces.C;
 with System;
 
-
 package Allegro5.Transformations is
 
    type ALLEGRO_TRANSFORM_m_array is array (0 .. 3, 0 .. 3) of aliased float;

@@ -3,7 +3,7 @@ with Interfaces.C.Extensions;
 with stdint;
 with System;
 
-limited with Allegro5.Altime;
+with Allegro5.Altime;
 with Allegro5.Base;
 with Allegro5.Display;
 with Allegro5.Joystick;
@@ -11,9 +11,6 @@ with Allegro5.Keyboard;
 with Allegro5.Keycodes;
 with Allegro5.Mouse;
 with Allegro5.Timer;
-
-use Allegro5;
-
 
 package Allegro5.Events is
 

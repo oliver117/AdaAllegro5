@@ -8,8 +8,6 @@ with Allegro5.Bitmap;
 with Allegro5.Color;
 with Allegro5.UTF8;
 
-use  Allegro5;
-
 package Allegro5.Allegro.Font is
 
    type ALLEGRO_FONT_VTABLE;

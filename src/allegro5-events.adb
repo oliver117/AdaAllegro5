@@ -1,7 +1,6 @@
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
 
-
 package body Allegro5.Events is
 
    function ALLEGRO_EVENT_TYPE_IS_USER (t : unsigned) return Extensions.bool is

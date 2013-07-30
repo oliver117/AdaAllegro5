@@ -6,9 +6,6 @@ with System;
 with Allegro5.Bitmap;
 limited with Allegro5.Events;
 
-use Allegro5;
-
-
 package Allegro5.Display is
 
    type ALLEGRO_DISPLAY is new System.Address;

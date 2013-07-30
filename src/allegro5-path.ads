@@ -3,7 +3,6 @@ with Interfaces.C.Extensions;
 with Interfaces.C.Strings;
 with System;
 
-
 package Allegro5.Path is
 
 

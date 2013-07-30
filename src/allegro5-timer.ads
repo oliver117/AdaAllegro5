@@ -5,7 +5,6 @@ with System;
 
 limited with Allegro5.Events;
 
-
 package Allegro5.Timer is
 
    type ALLEGRO_TIMER is new System.Address;

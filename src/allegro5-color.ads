@@ -1,6 +1,5 @@
 with Interfaces.C; use Interfaces.C;
 
-
 package Allegro5.Color is
 
    type ALLEGRO_COLOR is record

@@ -1,7 +1,6 @@
 with Interfaces.C; use Interfaces.C;
 with System;
 
-
 package Allegro5.TLS is
 
    subtype ALLEGRO_STATE_FLAGS is unsigned;

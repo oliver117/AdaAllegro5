@@ -6,8 +6,6 @@ with System;
 with Allegro5.Bitmap;
 with Allegro5.File;
 
-use  Allegro5;
-
 package Allegro5.Bitmap_IO is
 
    type ALLEGRO_IIO_LOADER_FUNCTION is access function

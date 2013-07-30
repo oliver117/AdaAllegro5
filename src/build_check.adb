@@ -1,5 +1,6 @@
 with Allegro5;
 with Allegro5.Allegro;
+with Allegro5.Allegro.Audio;
 with Allegro5.Allegro.Font;
 with Allegro5.Allegro.Image;
 with Allegro5.Allegro.Primitives;
@@ -39,7 +40,6 @@ with Allegro5.Timer;
 with Allegro5.TLS;
 with Allegro5.Transformations;
 with Allegro5.UTF8;
-
 
 procedure Build_Check is
 begin

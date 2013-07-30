@@ -1,6 +1,5 @@
 with Interfaces.C; use Interfaces.C;
 
-
 package Allegro5.Keycodes is
 
    subtype ALLEGRO_KEYCODE is unsigned;

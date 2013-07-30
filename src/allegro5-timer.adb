@@ -1,6 +1,5 @@
 with Interfaces.C; use Interfaces.C;
 
-
 package body Allegro5.Timer is
 
    function ALLEGRO_USECS_TO_SECS (x : double) return double is

@@ -1,7 +1,6 @@
 with Interfaces.C; use Interfaces.C;
 with Allegro5.Color;
 
-
 package Allegro5.Drawing is
 
    procedure al_clear_to_color (color : Allegro5.Color.ALLEGRO_COLOR);
