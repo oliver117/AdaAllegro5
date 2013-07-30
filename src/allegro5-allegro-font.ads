@@ -4,7 +4,7 @@ with Interfaces.C.Strings;
 with stdint;
 with System;
 
-limited with Allegro5.Bitmap;
+with Allegro5.Bitmap;
 with Allegro5.Color;
 with Allegro5.UTF8;
 
