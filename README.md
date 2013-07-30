@@ -23,13 +23,14 @@ http://alleg.sourceforge.net/
 
 ### feature
 
-* create bindings to addons (acodec)
+* create bindings to addons
 
 ## inline docs
 
 done for:
 
 * altime
+* acodec
 * audio
 * bitmap
 * bitmap_draw

@@ -1,5 +1,6 @@
 with Allegro5;
 with Allegro5.Allegro;
+with Allegro5.Allegro.ACodec;
 with Allegro5.Allegro.Audio;
 with Allegro5.Allegro.Font;
 with Allegro5.Allegro.Image;
