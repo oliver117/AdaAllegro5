@@ -4,7 +4,7 @@ with Interfaces.C.Strings;
 with stdint;
 with System;
 
-with Allegro5.Bitmap;
+limited with Allegro5.Bitmap;
 with Allegro5.Color;
 with Allegro5.UTF8;
 
@@ -100,10 +100,11 @@ package Allegro5.Allegro.Font is
       return     access ALLEGRO_FONT;
    pragma Import (C, al_load_bitmap_font, "al_load_bitmap_font");
 
-   -- Call this after al_init_font_addon to make al_load_font recognize ".ttf"
-   --and other formats supported by al_load_ttf_font.
+   -- Loads a font from disk. This will use al_load_bitmap_font if you pass
+   --the name of a known bitmap format, or else al_load_ttf_font.
    --
-   -- Returns true on success, false on failure.
+   -- Bitmap and TTF fonts are affected by the current bitmap flags at the
+   --time the font is loaded.
    function al_load_font
      (filename : Interfaces.C.Strings.chars_ptr;
       size     : int;
@@ -138,7 +139,7 @@ package Allegro5.Allegro.Font is
    -- Like al_draw_text, except the text is passed as an ALLEGRO_USTR instead
    --of a NUL-terminated char array.
    procedure al_draw_ustr
-     (font  : ALLEGRO_FONT;
+     (font  : access ALLEGRO_FONT;
       color : Allegro5.Color.ALLEGRO_COLOR;
       x     : Float;
       y     : Float;
@@ -159,7 +160,7 @@ package Allegro5.Allegro.Font is
    -- ALLEGRO_ALIGN_INTEGER - Always draw text aligned to an integer pixel
    --position. This is formerly the default behaviour.
    procedure al_draw_text
-     (font  : ALLEGRO_FONT;
+     (font  : access ALLEGRO_FONT;
       color : Allegro5.Color.ALLEGRO_COLOR;
       x     : Float;
       y     : Float;
@@ -178,7 +179,7 @@ package Allegro5.Allegro.Font is
    --
    -- ALLEGRO_ALIGN_INTEGER - Draw text aligned to integer pixel positions.
    procedure al_draw_justified_text
-     (font   : ALLEGRO_FONT;
+     (font   : access ALLEGRO_FONT;
       color  : Allegro5.Color.ALLEGRO_COLOR;
       x1     : Float;
       x2     : Float;
@@ -191,7 +192,7 @@ package Allegro5.Allegro.Font is
    -- Like al_draw_justified_text, except the text is passed as an
    --ALLEGRO_USTR instead of a NUL-terminated char array.
    procedure al_draw_justified_ustr
-     (font  : ALLEGRO_FONT;
+     (font  : access ALLEGRO_FONT;
       color : Allegro5.Color.ALLEGRO_COLOR;
       x1    : Float;
       x2    : Float;
@@ -204,7 +205,7 @@ package Allegro5.Allegro.Font is
    -- Formatted text output, using a printf() style format string. All
    --parameters have the same meaning as with al_draw_text otherwise.
    procedure al_draw_textf
-     (font   : ALLEGRO_FONT;
+     (font   : access ALLEGRO_FONT;
       color  : Allegro5.Color.ALLEGRO_COLOR;
       x      : Float;
       y      : Float;
@@ -215,7 +216,7 @@ package Allegro5.Allegro.Font is
    -- Formatted text output, using a printf() style format string. All
    --parameters have the same meaning as with al_draw_justified_text otherwise.
    procedure al_draw_justified_textf
-     (font   : ALLEGRO_FONT;
+     (font   : access ALLEGRO_FONT;
       color  : Allegro5.Color.ALLEGRO_COLOR;
       x1     : Float;
       x2     : Float;
@@ -227,14 +228,14 @@ package Allegro5.Allegro.Font is
 
    -- Calculates the length of a string in a particular font, in pixels.
    function al_get_text_width
-     (f    : ALLEGRO_FONT;
+     (f    : access ALLEGRO_FONT;
       str  : Interfaces.C.Strings.chars_ptr)
       return int;
    pragma Import (C, al_get_text_width, "al_get_text_width");
 
    -- Like al_get_text_width but expects an ALLEGRO_USTR.
    function al_get_ustr_width
-     (f    : ALLEGRO_FONT;
+     (f    : access ALLEGRO_FONT;
       ustr : access constant UTF8.ALLEGRO_USTR)
       return int;
    pragma Import (C, al_get_ustr_width, "al_get_ustr_width");
@@ -243,15 +244,15 @@ package Allegro5.Allegro.Font is
    --bitmap fonts this is simply the height of all glyph bitmaps. For truetype
    --fonts it is whatever the font file specifies. In particular, some special
    --glyphs may be higher than the height returned here.
-   function al_get_font_line_height (f : ALLEGRO_FONT) return int;
+   function al_get_font_line_height (f : access ALLEGRO_FONT) return int;
    pragma Import (C, al_get_font_line_height, "al_get_font_line_height");
 
    -- Returns the ascent of the specified font.
-   function al_get_font_ascent (f : ALLEGRO_FONT) return int;
+   function al_get_font_ascent (f : access ALLEGRO_FONT) return int;
    pragma Import (C, al_get_font_ascent, "al_get_font_ascent");
 
    -- Returns the descent of the specified font.
-   function al_get_font_descent (f : ALLEGRO_FONT) return int;
+   function al_get_font_descent (f : access ALLEGRO_FONT) return int;
    pragma Import (C, al_get_font_descent, "al_get_font_descent");
 
    -- Frees the memory being used by a font structure. Does nothing if passed
@@ -263,7 +264,7 @@ package Allegro5.Allegro.Font is
    --are not enough for exact text placement, so this function returns some
    --additional information.
    procedure al_get_ustr_dimensions
-     (f    : ALLEGRO_FONT;
+     (f    : access ALLEGRO_FONT;
       text : access constant UTF8.ALLEGRO_USTR;
       bbx  : access int;
       bby  : access int;
@@ -282,7 +283,7 @@ package Allegro5.Allegro.Font is
    -- Note that glyphs may go to the left and upwards of the X, in which case
    --x and y will have negative values.
    procedure al_get_text_dimensions
-     (f    : ALLEGRO_FONT;
+     (f    : access ALLEGRO_FONT;
       text : Interfaces.C.Strings.chars_ptr;
       bbx  : access int;
       bby  : access int;

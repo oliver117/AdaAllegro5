@@ -18,6 +18,7 @@ http://alleg.sourceforge.net/
 * utf8 - va_list
 * merge fmaths_inline and fmaths?
 * move al_(get|set)_new_display_adapter to monitor?
+* add missing flags in font addon package
 
 ### feature
 
@@ -42,3 +43,4 @@ done for:
 * monitor
 * mouse
 * mouse_cursor
+* ttf addon
