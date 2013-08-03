@@ -19,7 +19,6 @@ http://alleg.sourceforge.net/
 * merge fmaths_inline and fmaths?
 * move al_(get|set)_new_display_adapter to monitor?
 * add missing flags in font addon package
-* formal params in audio addon
 
 ### feature
 
