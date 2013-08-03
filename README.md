@@ -19,6 +19,7 @@ http://alleg.sourceforge.net/
 * merge fmaths_inline and fmaths?
 * move al_(get|set)_new_display_adapter to monitor?
 * add missing flags in font addon package
+* bitmap_lock - pixel format (is in color)
 
 ### feature
 
@@ -31,9 +32,14 @@ done for:
 * altime
 * acodec
 * audio
+* base
 * bitmap
 * bitmap_draw
 * bitmap_io
+* bitmap_lock
+* blender
+* color
+* config
 * debug
 * fixed
 * font addon
