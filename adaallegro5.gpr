@@ -18,8 +18,11 @@ project AdaAllegro5 is
 
    package Linker is
       for Default_Switches ("ada") use ("-g", "-Wl,--gc-sections");
-      for Linker_Options use ("-lallegro", "-lallegro_primitives");
    end Linker;
+
+   package Ide is
+      for Gnat use "/usr/gnat/bin/gnat";
+   end Ide;
 
 end AdaAllegro5;
 

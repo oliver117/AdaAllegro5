@@ -16,7 +16,7 @@ package Allegro5.Addon.TTF is
    --done).
    ALLEGRO_TTF_MONOCHROME : constant := 2;
 
-   -- isable the Auto Hinter which is enabled by default in newer versions of
+   -- Disable the Auto Hinter which is enabled by default in newer versions of
    --FreeType.
    ALLEGRO_TTF_NO_AUTOHINT : constant := 4;
 

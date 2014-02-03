@@ -8,6 +8,7 @@ package Allegro5.Bitmap is
 
    -- Abstract type representing a bitmap (2D image).
    type ALLEGRO_BITMAP is private;
+   No_Bitmap : constant ALLEGRO_BITMAP;
 
    -- Sets the pixel format for newly created bitmaps. The default format is 0
    --and means the display driver will choose the best format.
@@ -193,5 +194,5 @@ package Allegro5.Bitmap is
 
 private
    type ALLEGRO_BITMAP is new System.Address;
-
+   No_Bitmap : constant ALLEGRO_BITMAP := ALLEGRO_BITMAP (System.Null_Address);
 end Allegro5.Bitmap;
