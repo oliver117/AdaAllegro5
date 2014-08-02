@@ -1,7 +1,6 @@
 with Interfaces.C;            use Interfaces.C;
 with Interfaces.C.Extensions;
 with Interfaces.C.Strings;
-with System;
 
 with Allegro5.Bitmap;
 with Allegro5.File;

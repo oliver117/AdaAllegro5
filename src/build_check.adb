@@ -35,10 +35,10 @@ with Allegro5.Monitor;
 with Allegro5.Mouse;
 with Allegro5.Mouse_Cursor;
 with Allegro5.Path;
+with Allegro5.State;
 with Allegro5.System;
 with Allegro5.Threads;
 with Allegro5.Timer;
-with Allegro5.TLS;
 with Allegro5.Transformations;
 with Allegro5.UTF8;
 

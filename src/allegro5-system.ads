@@ -12,7 +12,10 @@ package Allegro5.System is
 
    type ALLEGRO_SYSTEM is new Standard.System.Address;
 
-   function al_install_system (version : int; atexit_ptr : access function (arg1 : access procedure) return int) return Extensions.bool;
+   type atexit_ptr_t is access function (arg1 : access procedure) return int;
+   pragma Convention (C, atexit_ptr_t);
+
+   function al_install_system (version : int; atexit_ptr : atexit_ptr_t) return Extensions.bool;
    pragma Import (C, al_install_system, "al_install_system");
 
    procedure al_uninstall_system;
@@ -51,5 +54,6 @@ package Allegro5.System is
 private
 
    function atexit(arg1 : access procedure) return int;
+   pragma Import (C, atexit, "atexit");
 
 end Allegro5.System;

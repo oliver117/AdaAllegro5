@@ -1,5 +1,4 @@
 with Interfaces.C; use Interfaces.C;
-with System;
 
 with Allegro5.Bitmap;
 with Allegro5.Color;

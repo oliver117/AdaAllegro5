@@ -1,4 +1,3 @@
-with Interfaces.C;   use Interfaces.C;
 with Allegro5.Fixed; use Allegro5;
 
 package Allegro5.Fmaths is

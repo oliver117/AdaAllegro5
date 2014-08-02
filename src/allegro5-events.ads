@@ -1,3 +1,4 @@
+with Interfaces; use Interfaces;
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
 with stdint;
@@ -18,6 +19,8 @@ package Allegro5.Events is
 
    type ALLEGRO_EVENT_QUEUE is new System.Address;
 
+   -- A macro which evaluates to true if the event type is not a builtin
+   --event type, i.e. one of those described in ALLEGRO_EVENT_TYPE.
    function ALLEGRO_EVENT_TYPE_IS_USER (t : unsigned) return Extensions.bool;
 
    function ALLEGRO_GET_EVENT_TYPE(a : int; b : int; c : int; d : int) return int renames Allegro5.Base.AL_ID;
@@ -121,7 +124,7 @@ package Allegro5.Events is
       c_type : aliased ALLEGRO_EVENT_TYPE;
       source : Timer.ALLEGRO_TIMER;
       timestamp : aliased double;
-      count : aliased stdint.int64_t;
+      count : aliased Integer_64;
       error : aliased double;
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_TIMER_EVENT);

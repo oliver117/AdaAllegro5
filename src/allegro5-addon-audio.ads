@@ -1,7 +1,7 @@
+with Interfaces; use Interfaces;
 with Interfaces.C;            use Interfaces.C;
 with Interfaces.C.Extensions;
 with Interfaces.C.Strings;
-with stdint;
 with System;
 
 limited with Allegro5.Events;
@@ -480,7 +480,7 @@ package Allegro5.Addon.Audio is
    --
    -- chan_conf - Must be one of the values listed for ALLEGRO_CHANNEL_CONF.
    function al_create_audio_stream
-     (buffer_count : stdint.size_t;
+     (buffer_count : size_t;
       samples      : unsigned;
       freq         : unsigned;
       depth        : ALLEGRO_AUDIO_DEPTH;
@@ -1063,7 +1063,7 @@ package Allegro5.Addon.Audio is
 
    -- Returns the (compiled) version of the addon, in the same format as
    --al_get_allegro_version.
-   function al_get_allegro_audio_version return  stdint.uint32_t;
+   function al_get_allegro_audio_version return  Unsigned_32;
    pragma Import
      (C,
       al_get_allegro_audio_version,
@@ -1073,14 +1073,14 @@ package Allegro5.Addon.Audio is
    --is one of the values listed under ALLEGRO_CHANNEL_CONF.
    function al_get_channel_count
      (conf : ALLEGRO_CHANNEL_CONF)
-      return stdint.size_t;
+      return size_t;
    pragma Import (C, al_get_channel_count, "al_get_channel_count");
 
    -- Return the size of a sample, in bytes, for the given format. The format
    --is one of the values listed under ALLEGRO_AUDIO_DEPTH.
    function al_get_audio_depth_size
      (conf : ALLEGRO_AUDIO_DEPTH)
-      return stdint.size_t;
+      return size_t;
    pragma Import (C, al_get_audio_depth_size, "al_get_audio_depth_size");
 
    -- Reserves a number of sample instances, attaching them to the default
@@ -1200,7 +1200,7 @@ package Allegro5.Addon.Audio is
      (ext           : Interfaces.C.Strings.chars_ptr;
       stream_loader : access function
      (filename     : Interfaces.C.Strings.chars_ptr;
-      buffer_count : stdint.size_t;
+      buffer_count : size_t;
       samples      : unsigned)
       return         ALLEGRO_AUDIO_STREAM)
       return          Extensions.bool;
@@ -1266,7 +1266,7 @@ package Allegro5.Addon.Audio is
      (ext           : Interfaces.C.Strings.chars_ptr;
       stream_loader : access function
      (fp           : File.ALLEGRO_FILE;
-      buffer_count : stdint.size_t;
+      buffer_count : size_t;
       samples      : unsigned)
       return         ALLEGRO_AUDIO_STREAM)
       return          Extensions.bool;
@@ -1311,7 +1311,7 @@ package Allegro5.Addon.Audio is
    -- Returns the stream on success, NULL on failure.
    function al_load_audio_stream
      (filename     : Interfaces.C.Strings.chars_ptr;
-      buffer_count : stdint.size_t;
+      buffer_count : size_t;
       samples      : unsigned)
       return         ALLEGRO_AUDIO_STREAM;
    pragma Import (C, al_load_audio_stream, "al_load_audio_stream");
@@ -1364,7 +1364,7 @@ package Allegro5.Addon.Audio is
    function al_load_audio_stream_f
      (fp           : File.ALLEGRO_FILE;
       ident        : Interfaces.C.Strings.chars_ptr;
-      buffer_count : stdint.size_t;
+      buffer_count : size_t;
       samples      : unsigned)
       return         ALLEGRO_AUDIO_STREAM;
    pragma Import (C, al_load_audio_stream_f, "al_load_audio_stream_f");

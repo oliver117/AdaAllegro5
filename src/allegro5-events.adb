@@ -1,5 +1,3 @@
-with Interfaces.C; use Interfaces.C;
-with Interfaces.C.Extensions;
 
 package body Allegro5.Events is
 

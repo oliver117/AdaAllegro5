@@ -1,6 +1,6 @@
+with Interfaces; use Interfaces;
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
-with stdint;
 with System;
 
 limited with Allegro5.Events;
@@ -38,13 +38,13 @@ package Allegro5.Timer is
    procedure al_set_timer_speed (timer : ALLEGRO_TIMER; speed_secs : double);
    pragma Import (C, al_set_timer_speed, "al_set_timer_speed");
 
-   function al_get_timer_count (timer : ALLEGRO_TIMER) return stdint.int64_t;
+   function al_get_timer_count (timer : ALLEGRO_TIMER) return Integer_64;
    pragma Import (C, al_get_timer_count, "al_get_timer_count");
 
-   procedure al_set_timer_count (timer : ALLEGRO_TIMER; count : stdint.int64_t);
+   procedure al_set_timer_count (timer : ALLEGRO_TIMER; count : Integer_64);
    pragma Import (C, al_set_timer_count, "al_set_timer_count");
 
-   procedure al_add_timer_count (timer : ALLEGRO_TIMER; diff : stdint.int64_t);
+   procedure al_add_timer_count (timer : ALLEGRO_TIMER; diff : Integer_64);
    pragma Import (C, al_add_timer_count, "al_add_timer_count");
 
    function al_get_timer_event_source (timer : ALLEGRO_TIMER) return access Allegro5.Events.ALLEGRO_EVENT_SOURCE;

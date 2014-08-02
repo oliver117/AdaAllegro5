@@ -1,6 +1,6 @@
+with Interfaces; use Interfaces;
 with Interfaces.C;            use Interfaces.C;
 with Interfaces.C.Extensions;
-with stdint;
 
 package Allegro5.Addon.Image is
 
@@ -24,7 +24,7 @@ package Allegro5.Addon.Image is
 
    -- Returns the (compiled) version of the addon, in the same format as
    --al_get_allegro_version.
-   function al_get_allegro_image_version return  stdint.uint32_t;
+   function al_get_allegro_image_version return  Unsigned_32;
    pragma Import
      (C,
       al_get_allegro_image_version,

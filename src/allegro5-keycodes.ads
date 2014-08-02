@@ -2,6 +2,9 @@ with Interfaces.C; use Interfaces.C;
 
 package Allegro5.Keycodes is
 
+   -- These are the list of key codes used by Allegro, which are returned in
+   --the event.keyboard.keycode field of the ALLEGRO_KEY_DOWN and
+   --ALLEGRO_KEY_UP events and which you can pass to al_key_down:
    subtype ALLEGRO_KEYCODE is unsigned;
    ALLEGRO_KEY_A : constant ALLEGRO_KEYCODE := 1;
    ALLEGRO_KEY_B : constant ALLEGRO_KEYCODE := 2;
@@ -126,6 +129,9 @@ package Allegro5.Keycodes is
    ALLEGRO_KEY_CAPSLOCK : constant ALLEGRO_KEYCODE := 226;
    ALLEGRO_KEY_MAX : constant ALLEGRO_KEYCODE := 227;
 
+   -- The event field 'keyboard.modifiers' is a bitfield composed of
+   --these constants. These indicate the modifier keys which were pressed
+   --at the time a character was typed.
    subtype ALLEGRO_KEYMOD is unsigned;
    ALLEGRO_KEYMOD_SHIFT : constant ALLEGRO_KEYMOD := 1;
    ALLEGRO_KEYMOD_CTRL : constant ALLEGRO_KEYMOD := 2;

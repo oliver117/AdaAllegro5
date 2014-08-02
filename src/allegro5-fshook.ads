@@ -1,8 +1,8 @@
+with Interfaces; use Interfaces;
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
 with Interfaces.C.Strings;
 with stdint;
-with System;
 
 with Allegro5.File;
 
@@ -29,7 +29,7 @@ package Allegro5.Fshook is
       fs_destroy_entry : access procedure (e : access ALLEGRO_FS_ENTRY);
       fs_entry_name : access function (e : access ALLEGRO_FS_ENTRY) return Interfaces.C.Strings.chars_ptr;
       fs_update_entry : access function (e : access ALLEGRO_FS_ENTRY) return Extensions.bool;
-      fs_entry_mode : access function (e : access ALLEGRO_FS_ENTRY) return stdint.uint32_t;
+      fs_entry_mode : access function (e : access ALLEGRO_FS_ENTRY) return Unsigned_32;
       fs_entry_atime : access function (e : access ALLEGRO_FS_ENTRY) return stdint.time_t;
       fs_entry_mtime : access function (e : access ALLEGRO_FS_ENTRY) return stdint.time_t;
       fs_entry_ctime : access function (e : access ALLEGRO_FS_ENTRY) return stdint.time_t;
@@ -60,7 +60,7 @@ package Allegro5.Fshook is
    function al_update_fs_entry (e : access ALLEGRO_FS_ENTRY) return Extensions.bool;
    pragma Import (C, al_update_fs_entry, "al_update_fs_entry");
 
-   function al_get_fs_entry_mode (e : access ALLEGRO_FS_ENTRY) return stdint.uint32_t;
+   function al_get_fs_entry_mode (e : access ALLEGRO_FS_ENTRY) return Unsigned_32;
    pragma Import (C, al_get_fs_entry_mode, "al_get_fs_entry_mode");
 
    function al_get_fs_entry_atime (e : access ALLEGRO_FS_ENTRY) return stdint.time_t;

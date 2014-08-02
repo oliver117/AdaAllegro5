@@ -1,8 +1,8 @@
+with Interfaces; use Interfaces;
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
 with Interfaces.C.Strings;
 with System;
-with stdint;
 
 package Allegro5.UTF8 is
 
@@ -21,7 +21,7 @@ package Allegro5.UTF8 is
    function al_ustr_new (s : Interfaces.C.Strings.chars_ptr) return access ALLEGRO_USTR;
    pragma Import (C, al_ustr_new, "al_ustr_new");
 
-   function al_ustr_new_from_buffer (s : Interfaces.C.Strings.chars_ptr; size : stdint.size_t) return access ALLEGRO_USTR;
+   function al_ustr_new_from_buffer (s : Interfaces.C.Strings.chars_ptr; size : size_t) return access ALLEGRO_USTR;
    pragma Import (C, al_ustr_new_from_buffer, "al_ustr_new_from_buffer");
 
    function al_ustr_newf (fmt : Interfaces.C.Strings.chars_ptr) return access ALLEGRO_USTR;
@@ -60,7 +60,7 @@ package Allegro5.UTF8 is
    function al_ref_buffer
      (info : access ALLEGRO_USTR_INFO;
       s : Interfaces.C.Strings.chars_ptr;
-      size : stdint.size_t) return ALLEGRO_USTR;
+      size : size_t) return ALLEGRO_USTR;
    pragma Import (C, al_ref_buffer, "al_ref_buffer");
 
    function al_ref_ustr
@@ -70,10 +70,10 @@ package Allegro5.UTF8 is
       end_pos : int) return ALLEGRO_USTR;
    pragma Import (C, al_ref_ustr, "al_ref_ustr");
 
-   function al_ustr_size (us : ALLEGRO_USTR) return stdint.size_t;
+   function al_ustr_size (us : ALLEGRO_USTR) return size_t;
    pragma Import (C, al_ustr_size, "al_ustr_size");
 
-   function al_ustr_length (us : ALLEGRO_USTR) return stdint.size_t;
+   function al_ustr_length (us : ALLEGRO_USTR) return size_t;
    pragma Import (C, al_ustr_length, "al_ustr_length");
 
    function al_ustr_offset (us : ALLEGRO_USTR; index : int) return int;
@@ -85,13 +85,13 @@ package Allegro5.UTF8 is
    function al_ustr_prev (us : ALLEGRO_USTR; pos : access int) return Extensions.bool;
    pragma Import (C, al_ustr_prev, "al_ustr_prev");
 
-   function al_ustr_get (us : ALLEGRO_USTR; pos : int) return stdint.int32_t;
+   function al_ustr_get (us : ALLEGRO_USTR; pos : int) return Integer_32;
    pragma Import (C, al_ustr_get, "al_ustr_get");
 
-   function al_ustr_get_next (us : ALLEGRO_USTR; pos : access int) return stdint.int32_t;
+   function al_ustr_get_next (us : ALLEGRO_USTR; pos : access int) return Integer_32;
    pragma Import (C, al_ustr_get_next, "al_ustr_get_next");
 
-   function al_ustr_prev_get (us : ALLEGRO_USTR; pos : access int) return stdint.int32_t;
+   function al_ustr_prev_get (us : ALLEGRO_USTR; pos : access int) return Integer_32;
    pragma Import (C, al_ustr_prev_get, "al_ustr_prev_get");
 
    function al_ustr_insert
@@ -109,7 +109,7 @@ package Allegro5.UTF8 is
    function al_ustr_insert_chr
      (us : access ALLEGRO_USTR;
       pos : int;
-      c : stdint.int32_t) return stdint.size_t;
+      c : Integer_32) return size_t;
    pragma Import (C, al_ustr_insert_chr, "al_ustr_insert_chr");
 
    function al_ustr_append (us1 : access ALLEGRO_USTR; us2 : ALLEGRO_USTR) return Extensions.bool;
@@ -118,7 +118,7 @@ package Allegro5.UTF8 is
    function al_ustr_append_cstr (us : access ALLEGRO_USTR; s : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
    pragma Import (C, al_ustr_append_cstr, "al_ustr_append_cstr");
 
-   function al_ustr_append_chr (us : access ALLEGRO_USTR; c : stdint.int32_t) return stdint.size_t;
+   function al_ustr_append_chr (us : access ALLEGRO_USTR; c : Integer_32) return size_t;
    pragma Import (C, al_ustr_append_chr, "al_ustr_append_chr");
 
    function al_ustr_appendf (us : access ALLEGRO_USTR; fmt : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
@@ -167,7 +167,7 @@ package Allegro5.UTF8 is
    function al_ustr_set_chr
      (us : access ALLEGRO_USTR;
       pos : int;
-      c : stdint.int32_t) return stdint.size_t;
+      c : Integer_32) return size_t;
    pragma Import (C, al_ustr_set_chr, "al_ustr_set_chr");
 
    function al_ustr_replace_range
@@ -180,13 +180,13 @@ package Allegro5.UTF8 is
    function al_ustr_find_chr
      (us : ALLEGRO_USTR;
       start_pos : int;
-      c : stdint.int32_t) return int;
+      c : Integer_32) return int;
    pragma Import (C, al_ustr_find_chr, "al_ustr_find_chr");
 
    function al_ustr_rfind_chr
      (us : ALLEGRO_USTR;
       start_pos : int;
-      c : stdint.int32_t) return int;
+      c : Integer_32) return int;
    pragma Import (C, al_ustr_rfind_chr, "al_ustr_rfind_chr");
 
    function al_ustr_find_set
@@ -275,28 +275,28 @@ package Allegro5.UTF8 is
    function al_ustr_has_suffix_cstr (us1 : ALLEGRO_USTR; s : Interfaces.C.Strings.chars_ptr) return Extensions.bool;
    pragma Import (C, al_ustr_has_suffix_cstr, "al_ustr_has_suffix_cstr");
 
-   function al_utf8_width (c : stdint.int32_t) return stdint.size_t;
+   function al_utf8_width (c : Integer_32) return size_t;
    pragma Import (C, al_utf8_width, "al_utf8_width");
 
-   function al_utf8_encode (s : Interfaces.C.Strings.chars_ptr; c : stdint.int32_t) return stdint.size_t;
+   function al_utf8_encode (s : Interfaces.C.Strings.chars_ptr; c : Integer_32) return size_t;
    pragma Import (C, al_utf8_encode, "al_utf8_encode");
 
-   function al_ustr_new_from_utf16 (s : access stdint.uint16_t) return access ALLEGRO_USTR;
+   function al_ustr_new_from_utf16 (s : access Unsigned_16) return access ALLEGRO_USTR;
    pragma Import (C, al_ustr_new_from_utf16, "al_ustr_new_from_utf16");
 
-   function al_ustr_size_utf16 (us : ALLEGRO_USTR) return stdint.size_t;
+   function al_ustr_size_utf16 (us : ALLEGRO_USTR) return size_t;
    pragma Import (C, al_ustr_size_utf16, "al_ustr_size_utf16");
 
    function al_ustr_encode_utf16
      (us : ALLEGRO_USTR;
-      s : access stdint.uint16_t;
-      n : stdint.size_t) return stdint.size_t;
+      s : access Unsigned_16;
+      n : size_t) return size_t;
    pragma Import (C, al_ustr_encode_utf16, "al_ustr_encode_utf16");
 
-   function al_utf16_width (c : int) return stdint.size_t;
+   function al_utf16_width (c : int) return size_t;
    pragma Import (C, al_utf16_width, "al_utf16_width");
 
-   function al_utf16_encode (s : access stdint.uint16_t; c : stdint.int32_t) return stdint.size_t;
+   function al_utf16_encode (s : access Unsigned_16; c : Integer_32) return size_t;
    pragma Import (C, al_utf16_encode, "al_utf16_encode");
 
 end Allegro5.UTF8;

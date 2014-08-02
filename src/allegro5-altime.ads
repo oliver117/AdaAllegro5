@@ -1,13 +1,13 @@
+with Interfaces; use Interfaces;
 with Interfaces.C; use Interfaces.C;
-with stdint;
 
 package Allegro5.Altime is
 
    -- Represent a timeout value. The size of the structure is known so can be
    --statically allocated. The contents are private.
    type ALLEGRO_TIMEOUT is record
-      uu_pad1_u_u : aliased stdint.uint64_t;
-      uu_pad2_u_u : aliased stdint.uint64_t;
+      uu_pad1_u_u : aliased Unsigned_64;
+      uu_pad2_u_u : aliased Unsigned_64;
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_TIMEOUT);
 

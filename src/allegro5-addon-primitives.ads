@@ -1,3 +1,4 @@
+with Interfaces; use Interfaces;
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
 with stdint;
@@ -54,7 +55,7 @@ package Allegro5.Addon.Primitives is
    end record;
    pragma Convention (C_Pass_By_Copy, ALLEGRO_VERTEX);
 
-   function al_get_allegro_primitives_version return stdint.uint32_t;
+   function al_get_allegro_primitives_version return Unsigned_32;
    pragma Import (C, al_get_allegro_primitives_version, "al_get_allegro_primitives_version");
 
    function al_init_primitives_addon return Extensions.bool;

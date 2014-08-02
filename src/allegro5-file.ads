@@ -1,3 +1,4 @@
+with Interfaces; use Interfaces;
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
 with Interfaces.C.Strings;
@@ -17,16 +18,16 @@ package Allegro5.File is
       fi_fread : access function
            (f : ALLEGRO_FILE;
             ptr : System.Address;
-            size : stdint.size_t) return stdint.size_t;
+            size : size_t) return size_t;
       fi_fwrite : access function
            (f : ALLEGRO_FILE;
             ptr : System.Address;
-            size : stdint.size_t) return stdint.size_t;
+            size : size_t) return size_t;
       fi_fflush : access function (f : ALLEGRO_FILE) return Extensions.bool;
-      fi_ftell : access function (f : ALLEGRO_FILE) return stdint.int64_t;
+      fi_ftell : access function (f : ALLEGRO_FILE) return Integer_64;
       fi_fseek : access function
            (f : ALLEGRO_FILE;
-            offset : stdint.int64_t;
+            offset : Integer_64;
             whence : int) return Extensions.bool;
       fi_feof : access function (f : ALLEGRO_FILE) return Extensions.bool;
       fi_ferror : access function (f : ALLEGRO_FILE) return Extensions.bool;
@@ -60,24 +61,24 @@ package Allegro5.File is
    function al_fread
      (f : ALLEGRO_FILE;
       ptr : System.Address;
-      size : stdint.size_t) return stdint.size_t;
+      size : size_t) return size_t;
    pragma Import (C, al_fread, "al_fread");
 
    function al_fwrite
      (f : ALLEGRO_FILE;
       ptr : System.Address;
-      size : stdint.size_t) return stdint.size_t;
+      size : size_t) return size_t;
    pragma Import (C, al_fwrite, "al_fwrite");
 
    function al_fflush (f : ALLEGRO_FILE) return Extensions.bool;
    pragma Import (C, al_fflush, "al_fflush");
 
-   function al_ftell (f : ALLEGRO_FILE) return stdint.int64_t;
+   function al_ftell (f : ALLEGRO_FILE) return Integer_64;
    pragma Import (C, al_ftell, "al_ftell");
 
    function al_fseek
      (f : ALLEGRO_FILE;
-      offset : stdint.int64_t;
+      offset : Integer_64;
       whence : int) return Extensions.bool;
    pragma Import (C, al_fseek, "al_fseek");
 
@@ -93,7 +94,7 @@ package Allegro5.File is
    function al_fungetc (f : ALLEGRO_FILE; c : int) return int;
    pragma Import (C, al_fungetc, "al_fungetc");
 
-   function al_fsize (f : ALLEGRO_FILE) return stdint.int64_t;
+   function al_fsize (f : ALLEGRO_FILE) return Integer_64;
    pragma Import (C, al_fsize, "al_fsize");
 
    function al_fgetc (f : ALLEGRO_FILE) return int;
@@ -102,34 +103,34 @@ package Allegro5.File is
    function al_fputc (f : ALLEGRO_FILE; c : int) return int;
    pragma Import (C, al_fputc, "al_fputc");
 
-   function al_fread16le (f : ALLEGRO_FILE) return stdint.int16_t;
+   function al_fread16le (f : ALLEGRO_FILE) return Integer_16;
    pragma Import (C, al_fread16le, "al_fread16le");
 
-   function al_fread16be (f : ALLEGRO_FILE) return stdint.int16_t;
+   function al_fread16be (f : ALLEGRO_FILE) return Integer_16;
    pragma Import (C, al_fread16be, "al_fread16be");
 
-   function al_fwrite16le (f : ALLEGRO_FILE; w : stdint.int16_t) return stdint.size_t;
+   function al_fwrite16le (f : ALLEGRO_FILE; w : Integer_16) return size_t;
    pragma Import (C, al_fwrite16le, "al_fwrite16le");
 
-   function al_fwrite16be (f : ALLEGRO_FILE; w : stdint.int16_t) return stdint.size_t;
+   function al_fwrite16be (f : ALLEGRO_FILE; w : Integer_16) return size_t;
    pragma Import (C, al_fwrite16be, "al_fwrite16be");
 
-   function al_fread32le (f : ALLEGRO_FILE) return stdint.int32_t;
+   function al_fread32le (f : ALLEGRO_FILE) return Integer_32;
    pragma Import (C, al_fread32le, "al_fread32le");
 
-   function al_fread32be (f : ALLEGRO_FILE) return stdint.int32_t;
+   function al_fread32be (f : ALLEGRO_FILE) return Integer_32;
    pragma Import (C, al_fread32be, "al_fread32be");
 
-   function al_fwrite32le (f : ALLEGRO_FILE; l : stdint.int32_t) return stdint.size_t;
+   function al_fwrite32le (f : ALLEGRO_FILE; l : Integer_32) return size_t;
    pragma Import (C, al_fwrite32le, "al_fwrite32le");
 
-   function al_fwrite32be (f : ALLEGRO_FILE; l : stdint.int32_t) return stdint.size_t;
+   function al_fwrite32be (f : ALLEGRO_FILE; l : Integer_32) return size_t;
    pragma Import (C, al_fwrite32be, "al_fwrite32be");
 
    function al_fgets
      (f : ALLEGRO_FILE;
       p : Interfaces.C.Strings.chars_ptr;
-      max : stdint.size_t) return Interfaces.C.Strings.chars_ptr;
+      max : size_t) return Interfaces.C.Strings.chars_ptr;
    pragma Import (C, al_fgets, "al_fgets");
 
    function al_fget_ustr (f : ALLEGRO_FILE) return access UTF8.ALLEGRO_USTR;
@@ -146,7 +147,7 @@ package Allegro5.File is
 
    function al_fopen_slice
      (fp : ALLEGRO_FILE;
-      initial_size : stdint.size_t;
+      initial_size : size_t;
       mode : Interfaces.C.Strings.chars_ptr) return ALLEGRO_FILE;
    pragma Import (C, al_fopen_slice, "al_fopen_slice");
 

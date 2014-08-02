@@ -1,13 +1,12 @@
 with Interfaces.C;         use Interfaces.C;
 with Interfaces.C.Strings;
-with stdint;
 with System;
 
 package Allegro5.Memory is
 
    type ALLEGRO_MEMORY_INTERFACE is record
       mi_malloc  : access function
-        (n    : stdint.size_t;
+        (n    : size_t;
          line : int;
          file : Interfaces.C.Strings.chars_ptr;
          func : Interfaces.C.Strings.chars_ptr)
@@ -19,14 +18,14 @@ package Allegro5.Memory is
          func : Interfaces.C.Strings.chars_ptr);
       mi_realloc : access function
         (ptr  : System.Address;
-         n    : stdint.size_t;
+         n    : size_t;
          line : int;
          file : Interfaces.C.Strings.chars_ptr;
          func : Interfaces.C.Strings.chars_ptr)
          return System.Address;
       mi_calloc  : access function
-        (count : stdint.size_t;
-         n     : stdint.size_t;
+        (count : size_t;
+         n     : size_t;
          line  : int;
          file  : Interfaces.C.Strings.chars_ptr;
          func  : Interfaces.C.Strings.chars_ptr)
@@ -48,7 +47,7 @@ package Allegro5.Memory is
    --
    -- Generally you should use the al_malloc subprogram renaming declaration.
    function al_malloc_with_context
-     (n    : stdint.size_t;
+     (n    : size_t;
       line : int;
       file : Interfaces.C.Strings.chars_ptr;
       func : Interfaces.C.Strings.chars_ptr)
@@ -60,7 +59,7 @@ package Allegro5.Memory is
    --
    -- This is a subprogram renaming declaration.
    function al_malloc
-     (n    : stdint.size_t;
+     (n    : size_t;
       line : int                            := -1;
       file : Interfaces.C.Strings.chars_ptr :=
       Interfaces.C.Strings.New_String ("NOT_SUPPORTED");
@@ -103,7 +102,7 @@ package Allegro5.Memory is
    -- Generally you should use the al_realloc subprogram renaming declaration.
    function al_realloc_with_context
      (ptr  : System.Address;
-      n    : stdint.size_t;
+      n    : size_t;
       line : int;
       file : Interfaces.C.Strings.chars_ptr;
       func : Interfaces.C.Strings.chars_ptr)
@@ -116,7 +115,7 @@ package Allegro5.Memory is
    -- This is a subprogram renaming declaration.
    function al_realloc
      (ptr  : System.Address;
-      n    : stdint.size_t;
+      n    : size_t;
       line : int;
       file : Interfaces.C.Strings.chars_ptr;
       func : Interfaces.C.Strings.chars_ptr)
@@ -127,8 +126,8 @@ package Allegro5.Memory is
    --
    -- Generally you should use the al_calloc subprogram renaming declaration.
    function al_calloc_with_context
-     (count : stdint.size_t;
-      n     : stdint.size_t;
+     (count : size_t;
+      n     : size_t;
       line  : int;
       file  : Interfaces.C.Strings.chars_ptr;
       func  : Interfaces.C.Strings.chars_ptr)
@@ -140,8 +139,8 @@ package Allegro5.Memory is
    --
    -- This is a subprogram renaming declaration.
    function al_calloc
-     (count : stdint.size_t;
-      n     : stdint.size_t;
+     (count : size_t;
+      n     : size_t;
       line  : int;
       file  : Interfaces.C.Strings.chars_ptr;
       func  : Interfaces.C.Strings.chars_ptr)

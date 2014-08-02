@@ -1,9 +1,10 @@
+with Interfaces; use Interfaces;
 with Interfaces.C; use Interfaces.C;
-with stdint;
 with System;
 
 package Allegro5.Base is
 
+   -- Converts four 8 bit values to a packed 32 bit integer ID.
    function AL_ID
      (a    : int;
       b    : int;
@@ -27,7 +28,7 @@ package Allegro5.Base is
    -- Returns the (compiled) version of the Allegro library, packed into a
    --single integer as groups of 8 bits in the form (major << 24) | (minor <<
    --16) | (revision << 8) | release.
-   function al_get_allegro_version return  stdint.uint32_t;
+   function al_get_allegro_version return Unsigned_32;
    pragma Import (C, al_get_allegro_version, "al_get_allegro_version");
 
    -- This function is useful in cases where you don't have a main() function

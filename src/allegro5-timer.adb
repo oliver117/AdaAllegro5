@@ -1,4 +1,3 @@
-with Interfaces.C; use Interfaces.C;
 
 package body Allegro5.Timer is
 

@@ -1,4 +1,4 @@
-with stdint;
+with Interfaces; use Interfaces;
 
 package Allegro5.Fixed is
 
@@ -26,7 +26,7 @@ package Allegro5.Fixed is
    --floating point types may be faster than fixed types if you are targeting
    --a specific machine class. Many embedded processors have no FPUs so fixed
    --point maths can be useful there.
-   subtype al_fixed is stdint.int32_t;
+   subtype al_fixed is Integer_32;
 
    -- This constant gives a ratio which can be used to convert a fixed point
    --number in binary angle format to a fixed point number in radians.

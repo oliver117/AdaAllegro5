@@ -9,7 +9,7 @@ project AdaAllegro5 is
    end Builder;
 
    package Compiler is
-      for Default_Switches ("ada") use ("-fdata-sections", "-ffunction-sections", "-gnato", "-fstack-check", "-gnatE", "-g", "-gnat12");
+      for Default_Switches ("ada") use ("-gnatwa", "-gnato", "-fstack-check", "-gnatE", "-g", "-gnat12");
    end Compiler;
 
    package Binder is
@@ -17,7 +17,8 @@ project AdaAllegro5 is
    end Binder;
 
    package Linker is
-      for Default_Switches ("ada") use ("-g", "-Wl,--gc-sections");
+      for Default_Switches ("ada") use ("-g", "-L/usr/local/lib/", "-lallegro", "-lallegro_acodec", "-lallegro_audio", "-lallegro_color", "-lallegro_font", "-lallegro_image", "-lallegro_main", "-lallegro_memfile", "-lallegro_physfs", 
+         "-lallegro_primitives", "-lallegro_ttf");
    end Linker;
 
    package Ide is

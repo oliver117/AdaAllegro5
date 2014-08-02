@@ -1,7 +1,5 @@
 with Ada.Text_IO;
-with Interfaces.c;
-with interfaces.c.Extensions;
-with Interfaces.c.Strings;
+with Interfaces.C;
 
 use interfaces.c;
 
@@ -11,8 +9,8 @@ with Allegro5.Display;
 with Allegro5.Drawing;
 with Allegro5.Color;
 with Allegro5.System;
-with Allegro5.Allegro.Primitives;
-use Allegro5.Allegro;
+with Allegro5.Addon.Primitives;
+use Allegro5.Addon;
 with Allegro5.Joystick;
 
 use Allegro5;
