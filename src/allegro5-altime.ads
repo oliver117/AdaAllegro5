@@ -26,7 +26,7 @@ package Allegro5.Altime is
 
    -- Set timeout value of some number of seconds after the function call.
    procedure al_init_timeout
-     (timeout : access ALLEGRO_TIMEOUT;
+     (timeout : out ALLEGRO_TIMEOUT;
       seconds : double);
    pragma Import (C, al_init_timeout, "al_init_timeout");
 

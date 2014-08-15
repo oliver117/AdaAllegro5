@@ -37,9 +37,9 @@ package Allegro5.Blender is
    -- Returns the active blender for the current thread. You can pass NULL for
    --values you are not interested in.
    procedure al_get_blender
-     (op     : access int;
-      source : access int;
-      dest   : access int);
+     (op     : out int;
+      source : out int;
+      dest   : out int);
    pragma Import (C, al_get_blender, "al_get_blender");
 
    -- Like al_set_blender, but allows specifying a separate blending operation
@@ -58,12 +58,12 @@ package Allegro5.Blender is
    -- Returns the active blender for the current thread. You can pass NULL for
    --values you are not interested in.
    procedure al_get_separate_blender
-     (op         : access int;
-      source     : access int;
-      dest       : access int;
-      alpha_op   : access int;
-      alpha_src  : access int;
-      alpha_dest : access int);
+     (op         : out int;
+      source     : out int;
+      dest       : out int;
+      alpha_op   : out int;
+      alpha_src  : out int;
+      alpha_dest : out int);
    pragma Import (C, al_get_separate_blender, "al_get_separate_blender");
 
 end Allegro5.Blender;

@@ -1,5 +1,5 @@
-with Interfaces; use Interfaces;
-with Interfaces.C;            use Interfaces.C;
+with Interfaces;   use Interfaces;
+with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Extensions;
 
 package Allegro5.Addon.Image is
@@ -14,7 +14,7 @@ package Allegro5.Addon.Image is
    -- Other formats may be available depending on the operating system and
    --installed libraries, but are not guaranteed and should not be assumed to
    --be universally available.
-   function al_init_image_addon return  Extensions.bool;
+   function al_init_image_addon return Extensions.bool;
    pragma Import (C, al_init_image_addon, "al_init_image_addon");
 
    -- Shut down the image addon. This is done automatically at program exit,
@@ -24,7 +24,7 @@ package Allegro5.Addon.Image is
 
    -- Returns the (compiled) version of the addon, in the same format as
    --al_get_allegro_version.
-   function al_get_allegro_image_version return  Unsigned_32;
+   function al_get_allegro_image_version return Unsigned_32;
    pragma Import
      (C,
       al_get_allegro_image_version,

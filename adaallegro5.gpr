@@ -23,7 +23,11 @@ project AdaAllegro5 is
 
    package Ide is
       for Gnat use "/usr/gnat/bin/gnat";
+      for Xref_Database use project'Object_Dir & "/xref_database.db";
+      for Documentation_Dir use "obj/doc";
    end Ide;
+
+   for Exec_Dir use "obj";
 
 end AdaAllegro5;
 

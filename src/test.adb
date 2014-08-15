@@ -1,11 +1,9 @@
 with Ada.Text_IO;
 with Interfaces.C;
 
-use interfaces.c;
-
 with Allegro5.Altime;
-with Allegro5.Base;
 with Allegro5.Display;
+with Allegro5.Thick.Display;
 with Allegro5.Drawing;
 with Allegro5.Color;
 with Allegro5.System;
@@ -23,7 +21,7 @@ use Ada.Numerics;
 with Ada.Containers.Doubly_Linked_Lists;
 
 procedure Test is
-   D: Display.ALLEGRO_DISPLAY;
+   D: Thick.Display.Allegro_Display;
    red: Color.ALLEGRO_COLOR;
 
    use Interfaces.C;
@@ -106,10 +104,10 @@ begin
 
    stick := Joystick.al_get_joystick (joyn =>  0);
 
-   Display.al_set_new_display_option(Display.ALLEGRO_SAMPLE_BUFFERS, 1, 1);
-   Display.al_set_new_display_option(Display.ALLEGRO_SAMPLES, 8, 1);
+   Thick.Display.Set_New_Display_Option (Display.ALLEGRO_SAMPLE_BUFFERS, 1, 1);
+   Thick.Display.Set_New_Display_Option (Display.ALLEGRO_SAMPLES, 8, 1);
 
-   D := Display.al_create_display (Screen_Width, Screen_Height);
+   D := Thick.Display.Create_Display (Screen_Width, Screen_Height);
 
    red := Color.al_map_rgb(255, 0, 0);
 
@@ -230,7 +228,7 @@ begin
       Allegro5.Altime.al_rest (seconds => 0.01);
    end loop;
 
-   Allegro5.Display.al_destroy_display (D);
+   D.Destroy_Display;
 
    Ada.Text_IO.Put_Line ("done");
 end Test;
